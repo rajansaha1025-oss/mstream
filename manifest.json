@@ -1,17 +1,2 @@
-{
-  "id": "./",
-  "name": "MStream — Watch • Share • Shop • Connect",
-  "short_name": "MStream",
-  "description": "Reels, movies, live TV, anime, shopping and chat in one app.",
-  "start_url": "./",
-  "scope": "./",
-  "display": "standalone",
-  "orientation": "portrait",
-  "background_color": "#F8FAFC",
-  "theme_color": "#EC008C",
-  "categories": ["entertainment", "social", "shopping"],
-  "icons": [
-    { "src": "mstream-icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
-    { "src": "mstream-icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
-  ]
-}
+{"id":"./","name":"MStream — Watch • Share • Play","short_name":"MStream","description":"Short videos, sharing and free games.","start_url":"./","scope":"./","display":"standalone","orientation":"portrait","background_color":"#ffffff","theme_color":"#6d28d9","categories":["entertainment","social"],
+"icons":[{"src":"icon-192.png","sizes":"192x192","type":"image/png","purpose":"any"},{"src":"icon-512.png","sizes":"512x512","type":"image/png","purpose":"any"}]}
