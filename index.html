@@ -14,16 +14,19 @@
 html,body{height:100%;margin:0}body{font:15px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans Bengali",sans-serif;background:var(--bg);color:var(--tx)}
 [hidden]{display:none!important}
 #app{height:100dvh;display:flex;flex-direction:column;padding-top:env(safe-area-inset-top)}
-header{height:52px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 14px;background:var(--card);border-bottom:1px solid var(--bd)}
-.logo{display:flex;align-items:center;gap:8px;font-weight:800;font-size:20px}.logo img{height:32px;width:32px;object-fit:contain}
+header{height:52px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 14px;background:var(--card);border-bottom:1px solid var(--bd);gap:8px}
+.logo{display:flex;align-items:center;gap:8px;font-weight:800;font-size:20px;cursor:pointer}.logo img{height:32px;width:32px;object-fit:contain}
+.hact{display:flex;align-items:center;gap:6px}
+.pill{background:var(--grad);color:#fff;border:0;border-radius:99px;padding:6px 12px;font-size:12px;font-weight:700;cursor:pointer}
 .grad-t{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 main{flex:1;min-height:0;position:relative}
 nav{flex:none;display:flex;justify-content:space-around;align-items:center;height:58px;background:var(--card);border-top:1px solid var(--bd);padding-bottom:env(safe-area-inset-bottom);box-sizing:content-box}
 nav button{background:none;border:0;color:var(--mut);display:flex;flex-direction:column;align-items:center;gap:2px;font-size:11px;padding:6px 14px;cursor:pointer}
 nav button.on{color:#e11d8f}nav svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 nav .plus{background:var(--grad);color:#fff!important;border-radius:14px;padding:8px 18px}
-.btn{background:var(--grad);color:#fff;border:0;border-radius:12px;padding:12px 16px;font-weight:700;font-size:15px;cursor:pointer;width:100%}.btn:disabled{opacity:.6}.btn.sm{width:auto;padding:10px 14px}
-.btn2{background:var(--card);color:var(--tx);border:1px solid var(--bd);border-radius:12px;padding:11px 16px;font-weight:600;font-size:14px;cursor:pointer;width:100%}
+.btn{background:var(--grad);color:#fff;border:0;border-radius:12px;padding:12px 16px;font-weight:700;font-size:15px;cursor:pointer;width:100%}.btn:disabled{opacity:.6}.btn.sm{width:auto;padding:8px 13px;font-size:13px}
+.btn2{background:var(--card);color:var(--tx);border:1px solid var(--bd);border-radius:12px;padding:11px 16px;font-weight:600;font-size:14px;cursor:pointer;width:100%}.btn2.sm{width:auto;padding:7px 11px;font-size:12px}
+.btn-danger{background:#e11d48;color:#fff;border:0;border-radius:10px;padding:7px 11px;font-size:12px;font-weight:600;cursor:pointer}
 .link{background:none;border:0;color:var(--mut);text-decoration:underline;cursor:pointer;font-size:14px;padding:8px}
 input{width:100%;background:var(--bg);color:var(--tx);border:1px solid var(--bd);border-radius:12px;padding:12px 14px;font-size:15px;margin-bottom:10px;outline:none}input:focus{border-color:#8b5cf6}
 .card{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:16px;margin-bottom:14px}
@@ -35,39 +38,54 @@ input{width:100%;background:var(--bg);color:var(--tx);border:1px solid var(--bd)
 .feed{height:100%;overflow-y:scroll;scroll-snap-type:y mandatory;background:#000;overscroll-behavior:contain}
 .reel{height:100%;scroll-snap-align:start;scroll-snap-stop:always;position:relative;display:flex;align-items:center;justify-content:center;color:#fff}
 .reel video,.reel img,.reel iframe{width:100%;height:100%;object-fit:contain;border:0;background:#000}
-.info{position:absolute;left:0;right:64px;bottom:0;padding:48px 14px 18px;background:linear-gradient(transparent,rgba(0,0,0,.75));display:flex;flex-direction:column;gap:2px;pointer-events:none}
-.rail{position:absolute;right:8px;bottom:70px;display:flex;flex-direction:column;gap:16px;align-items:center}
-.rail button{background:rgba(0,0,0,.4);border:0;color:#fff;width:48px;height:48px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer}.rail svg{width:22px;height:22px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.rail .on svg{fill:#ff2d7a;stroke:#ff2d7a}.rail small{font-size:10px;margin-top:-1px}
-.mute{position:absolute;top:10px;right:10px;z-index:2;background:rgba(0,0,0,.5);color:#fff;border:0;border-radius:99px;padding:7px 12px;font-size:12px;cursor:pointer}
-.empty{height:100%;display:flex;align-items:center;justify-content:center;text-align:center;color:#cbd5e1;padding:30px}
+.info{position:absolute;left:0;right:68px;bottom:0;padding:48px 14px 18px;background:linear-gradient(transparent,rgba(0,0,0,.78));display:flex;flex-direction:column;gap:3px;pointer-events:none}
+.meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:12px;color:#e2e8f0}
+.tag{background:rgba(255,255,255,.18);backdrop-filter:blur(4px);padding:2px 8px;border-radius:99px;font-size:11px;font-weight:600}
+.tag.hid{background:#e11d48;color:#fff}
+.rail{position:absolute;right:8px;bottom:70px;display:flex;flex-direction:column;gap:14px;align-items:center}
+.rail button{background:rgba(0,0,0,.45);border:0;color:#fff;width:48px;height:48px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer}.rail svg{width:22px;height:22px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.rail .on svg{fill:#ff2d7a;stroke:#ff2d7a}.rail small{font-size:10px;margin-top:-1px}
+.mute{position:absolute;top:10px;right:10px;z-index:2;background:rgba(0,0,0,.55);color:#fff;border:0;border-radius:99px;padding:7px 12px;font-size:12px;cursor:pointer}
+.empty{height:100%;display:flex;align-items:center;justify-content:center;text-align:center;color:#cbd5e1;padding:30px;flex-direction:column;gap:10px}
 .page{height:100%;overflow:auto;padding:16px;max-width:720px;margin:0 auto}
 .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.gcard{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:20px 10px;text-align:center;cursor:pointer;color:var(--tx);font:inherit}.gcard i{font-style:normal;font-size:42px;display:block}
 .ava{width:76px;height:76px;border-radius:50%;background:var(--grad);color:#fff;display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:800;margin:0 auto 8px}
-.thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.th{position:relative;aspect-ratio:9/14;background:#1e1e2a;border-radius:10px;overflow:hidden}.th img{width:100%;height:100%;object-fit:cover}.th button{position:absolute;top:4px;right:4px;background:rgba(0,0,0,.65);color:#fff;border:0;border-radius:6px;padding:4px 7px;font-size:11px;cursor:pointer}
+.thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.th{position:relative;aspect-ratio:9/14;background:#1e1e2a;border-radius:10px;overflow:hidden;cursor:pointer}.th img{width:100%;height:100%;object-fit:cover}.th .tlabel{position:absolute;left:0;right:0;bottom:0;padding:18px 6px 5px;background:linear-gradient(transparent,rgba(0,0,0,.8));color:#fff;font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.th button{position:absolute;top:4px;right:4px;background:rgba(0,0,0,.7);color:#fff;border:0;border-radius:6px;padding:4px 7px;font-size:11px;cursor:pointer}
 #sheet{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:50;display:flex;align-items:flex-end}.sheet{background:var(--card);width:100%;max-height:75dvh;border-radius:20px 20px 0 0;padding:16px;overflow:auto;max-width:720px;margin:0 auto}
-.cm{padding:8px 0;border-bottom:1px solid var(--bd);font-size:14px}
+.cm{padding:8px 0;border-bottom:1px solid var(--bd);font-size:14px;display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+.cm-del{background:none;border:0;color:#e11d48;cursor:pointer;font-size:15px;padding:0 4px;line-height:1}
 #toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:#0f172a;color:#fff;padding:10px 16px;border-radius:12px;font-size:14px;z-index:99;max-width:90%;opacity:0;pointer-events:none;transition:.25s}#toast.show{opacity:1}
 canvas{background:#0f172a;border-radius:12px;max-width:100%;display:block;margin:0 auto}
 .g2048{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;background:#475569;padding:6px;border-radius:12px;max-width:300px;margin:0 auto}.g2048 div{aspect-ratio:1;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:20px}
 .mem{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;max-width:300px;margin:0 auto}.mem button{aspect-ratio:1;border:0;border-radius:12px;font-size:28px;background:#6d28d9;cursor:pointer}.mem .up{background:#fff}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px}.stat{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:10px 6px;text-align:center}.stat b{font-size:20px;display:block}.stat small{font-size:11px;color:var(--mut)}
+.arow{display:flex;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid var(--bd)}.arow:last-child{border-bottom:0}
+.ath{width:46px;height:62px;border-radius:8px;background:#1e1e2a;overflow:hidden;flex:none;cursor:pointer}.ath img{width:100%;height:100%;object-fit:cover}
+.ainfo{flex:1;min-width:0}.ainfo b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.ainfo small{color:var(--mut);font-size:12px}
+.aacts{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.badge{display:inline-block;padding:2px 8px;border-radius:99px;font-size:11px;font-weight:700;background:var(--bd);color:var(--tx)}.badge.adm{background:#6d28d9;color:#fff}.badge.ban{background:#e11d48;color:#fff}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
 </head><body>
 <div id="auth" hidden></div>
 <div id="app" hidden>
-  <header><div class="logo"><img src="assets/logo.png" alt=""><span class="grad-t">MStream</span></div><button class="link" id="tb" data-a="theme" aria-label="Change theme"></button></header>
+  <header>
+    <div class="logo" data-a="go" data-t="home"><img src="assets/logo.png" alt=""><span class="grad-t">MStream</span></div>
+    <div class="hact"><button class="pill" id="admb" data-a="go" data-t="admin" hidden>Admin</button><button class="link" id="tb" data-a="theme" aria-label="Change theme"></button></div>
+  </header>
   <main id="view"></main><nav id="nav"></nav>
 </div>
 <div id="sheet" hidden></div><div id="toast" role="status"></div>
 <script>
-// ===== Settings (paste your Supabase Project URL below) =====
-const CFG={supabaseUrl:'https://opducjfhhnrlbklynqed.supabase.co',supabaseKey:'sb_publishable_coBrvcC2cDQgnKpusUpuMg_QUXsx4DK',cloudName:'qdvg6ovh',preset:'vwkzcs5p',adHtml:''};
+// ===== Settings =====
+const CFG={supabaseUrl:'https://opducjfhhnrlbklynqed.supabase.co',supabaseKey:'sb_publishable_coBrvcC2cDQgnKpusUpuMg_QUXsx4DK',cloudName:'qdvg6ovh',preset:'vwkzcs5p',adHtml:'',enableGoogle:false};
 const $=s=>document.querySelector(s),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const ls=(k,v)=>{try{return v===undefined?localStorage.getItem(k):localStorage.setItem(k,v)}catch(e){}};
+const fmtNum=n=>{n=+n||0;if(n>=1e6)return(n/1e6).toFixed(1).replace(/\.0$/,'')+'M';if(n>=1e3)return(n/1e3).toFixed(1).replace(/\.0$/,'')+'K';return String(n)};
 const svg=p=>`<svg viewBox="0 0 24 24">${p}</svg>`;
 const I={home:svg('<path d="M3 11l9-8 9 8v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/>'),games:svg('<rect x="2" y="7" width="20" height="11" rx="5"/><path d="M7 10v5M4.5 12.5h5M16 11.5h.01M18.5 14h.01"/>'),plus:svg('<path d="M12 5v14M5 12h14"/>'),user:svg('<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/>'),
-heart:svg('<path d="M12 21s-8-5.5-8-11a4.500 4.500 0 0 1 8-2.500A4.500 4.500 0 0 1 20 10c0 5.500-8 11-8 11z"/>'),cmt:svg('<path d="M21 12a8 8 0 0 1-11.600 7.100L4 20l1-4.600A8 8 0 1 1 21 12z"/>'),share:svg('<path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7M16 6l-4-4-4 4M12 2v14"/>')};
-let sb,me,prof,tab='home',liked=new Set(),muted=true,posts=[],stop=null;
+heart:svg('<path d="M12 21s-8-5.5-8-11a4.5 4.5 0 0 1 8-2.5A4.5 4.5 0 0 1 20 10c0 5.5-8 11-8 11z"/>'),cmt:svg('<path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/>'),share:svg('<path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7M16 6l-4-4-4 4M12 2v14"/>'),
+shield:svg('<path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/>')};
+let sb,me,prof,tab='home',liked=new Set(),muted=true,posts=[],stop=null,focusVid=null,admTab='videos',admQuery='';
 const toast=m=>{const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove('show'),2800)};
 const setTheme=t=>{document.documentElement.dataset.theme=t;ls('ms_theme',t);const b=$('#tb');if(b)b.textContent=t==='dark'?'Light mode':'Dark mode'};
 const sheet=h=>{const s=$('#sheet');s.innerHTML='<div class="sheet">'+h+'</div>';s.hidden=false},closeSheet=()=>{$('#sheet').hidden=true};
@@ -75,9 +93,12 @@ $('#sheet').onclick=e=>{if(e.target.id==='sheet')closeSheet()};
 const YT=/(?:youtu\.be\/|v=|shorts\/|embed\/)([\w-]{11})/;
 const mkThumb=u=>{const y=u.match(YT);if(y)return`https://i.ytimg.com/vi/${y[1]}/hqdefault.jpg`;if(/res\.cloudinary\.com\/[^/]+\/video\//.test(u))return u.replace(/\.[a-z0-9]+$/i,'.jpg');if(/\.(jpe?g|png|webp|gif)(\?|$)/i.test(u))return u;return null};
 const friendly=m=>/invalid login/i.test(m)?'Email or password is wrong.':/not confirmed/i.test(m)?'Please confirm your email first (check your inbox).':/already registered/i.test(m)?'This email already has an account. Log in instead.':/rate limit|too many/i.test(m)?'Too many tries. Please wait a minute.':/provider is not enabled|unsupported provider/i.test(m)?'Google login is not turned on yet.':/anonymous/i.test(m)?'Guest mode is off. Turn on Anonymous sign-ins in Supabase.':m;
+const isAdmin=()=>prof?.role==='admin';
 
 // ===== Start =====
 async function init(){
+  const qv=new URLSearchParams(location.search).get('v');
+  if(qv&&/^\d+$/.test(qv))focusVid=+qv;
   setTheme(ls('ms_theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'));
   if(!CFG.supabaseUrl||!window.supabase){$('#auth').hidden=false;$('#auth').innerHTML='<div class="box card"><b>Almost ready</b><p class="mut">Paste your Supabase Project URL into <code>supabaseUrl</code> at the top of the script in index.html.</p></div>';return}
   sb=supabase.createClient(CFG.supabaseUrl,CFG.supabaseKey);
@@ -89,8 +110,9 @@ async function init(){
 }
 async function enter(u){
   me=u;const r=await sb.from('profiles').select('*').eq('id',u.id).maybeSingle();
-  prof=r.data||{display_name:'user',role:'user'};
+  prof=r.data||{display_name:'user',role:'user',banned:false};
   $('#auth').hidden=true;$('#app').hidden=false;
+  $('#admb').hidden=!isAdmin();
   $('#nav').innerHTML=[['home','Home'],['games','Games'],['up',''],['me','Profile']].map(([k,l])=>`<button data-a="go" data-t="${k}" class="${k==='up'?'plus':''}" aria-label="${l||'Upload'}">${I[k==='up'?'plus':k==='me'?'user':k]}${l?`<span>${l}</span>`:''}</button>`).join('');
   setTheme(document.documentElement.dataset.theme);go('home');
 }
@@ -100,7 +122,7 @@ function showAuth(mode='login'){
   <div class="seg"><button data-m="login" class="${mode==='login'?'on':''}">Log in</button><button data-m="signup" class="${mode==='signup'?'on':''}">Sign up</button></div>
   <form id="af">${mode==='signup'?'<input id="an" placeholder="Your name" maxlength="24" minlength="2" autocomplete="nickname" required>':''}<input id="ae" type="email" placeholder="Email" autocomplete="email" required><input id="ap" type="password" placeholder="Password (min 6 characters)" minlength="6" autocomplete="${mode==='signup'?'new-password':'current-password'}" required><button class="btn" id="ab">${mode==='signup'?'Create account':'Log in'}</button></form>
   <div id="am" class="msg"></div>${mode==='login'?'<button class="link" id="fg">Forgot password?</button>':''}
-  <div class="or"><span>or</span></div><button class="btn2" id="gg">Continue with Google</button><button class="link" id="gu">Continue as guest</button></div>`;
+  <div class="or"><span>or</span></div>${CFG.enableGoogle?'<button class="btn2" id="gg" style="margin-bottom:6px">Continue with Google</button>':''}<button class="link" id="gu">Continue as guest</button></div>`;
   const msg=(t,e)=>{const m=$('#am');m.textContent=t;m.className='msg'+(e?' err':'')};
   a.querySelectorAll('.seg button').forEach(b=>b.onclick=()=>showAuth(b.dataset.m));
   $('#af').onsubmit=async e=>{e.preventDefault();$('#ab').disabled=true;msg('Please wait…');const em=$('#ae').value.trim(),pw=$('#ap').value;
@@ -109,62 +131,142 @@ function showAuth(mode='login'){
     if(!r.data.session)return msg('Almost done! We sent a confirmation link to '+em+'. Open it, then log in.');
     enter(r.data.user)};
   const fg=$('#fg');if(fg)fg.onclick=async()=>{const em=$('#ae').value.trim();if(!em)return msg('Type your email above first.',1);const r=await sb.auth.resetPasswordForEmail(em,{redirectTo:location.origin+location.pathname});msg(r.error?friendly(r.error.message):'Password reset link sent. Check your email.',!!r.error)};
-  $('#gg').onclick=async()=>{const r=await sb.auth.signInWithOAuth({provider:'google',options:{redirectTo:location.origin+location.pathname}});if(r.error)msg(friendly(r.error.message),1)};
+  const gg=$('#gg');if(gg)gg.onclick=async()=>{const r=await sb.auth.signInWithOAuth({provider:'google',options:{redirectTo:location.origin+location.pathname}});if(r.error)msg(friendly(r.error.message),1)};
   $('#gu').onclick=async()=>{const r=await sb.auth.signInAnonymously();if(r.error)return msg(friendly(r.error.message),1);enter(r.data.user)};
 }
 
 // ===== Navigation & actions =====
-function go(t){tab=t;if(stop){stop();stop=null}document.querySelectorAll('#nav button').forEach(b=>b.classList.toggle('on',b.dataset.t===t));$('#view').innerHTML='';({home,games,up:upload,me:profileView})[t]()}
+function go(t){
+  tab=t;if(stop){stop();stop=null}
+  document.querySelectorAll('#nav button').forEach(b=>b.classList.toggle('on',b.dataset.t===t));
+  $('#view').innerHTML='';
+  ({home,games,up:upload,me:profileView,admin:adminView})[t]();
+}
+function openVideo(id){focusVid=id;go('home')}
 document.addEventListener('click',e=>{
   if(e.target.tagName==='VIDEO'&&e.target.closest('.feed')){e.target.paused?e.target.play():e.target.pause();return}
   const b=e.target.closest('[data-a]');if(!b)return;const a=b.dataset.a,id=+b.dataset.id;
   if(a==='go')go(b.dataset.t);else if(a==='like')like(id,b);else if(a==='cm')comments(id);else if(a==='sh')share(id);
   else if(a==='mute'){muted=!muted;document.querySelectorAll('.feed video').forEach(v=>v.muted=muted);b.textContent=muted?'Sound off':'Sound on'}
   else if(a==='theme')setTheme(document.documentElement.dataset.theme==='dark'?'light':'dark');
-  else if(a==='acct')go('me');else if(a==='del')delPost(id);else if(a==='game')game(b.dataset.g);else if(a==='out')sb.auth.signOut();
-  else if(a==='consent'){ls('ms_consent',b.dataset.v);closeSheet();if(tab==='games')games()}});
+  else if(a==='acct')go('me');else if(a==='del')delPost(id);else if(a==='open')openVideo(id);
+  else if(a==='game')game(b.dataset.g);else if(a==='out')sb.auth.signOut();
+  else if(a==='consent'){ls('ms_consent',b.dataset.v);closeSheet();if(tab==='games')games()}
+  else if(a==='delc')delComment(id,+b.dataset.pid);
+  else if(a==='mod')modPostSheet(id);
+  else if(a==='hide')toggleHide(id,b.dataset.v==='1');
+  else if(a==='adel')adminDelPost(id);
+  else if(a==='ban')toggleBan(b.dataset.uid,b.dataset.v==='1');
+  else if(a==='atab'){admTab=b.dataset.v;admQuery='';adminView()}
+});
 
 // ===== Home feed =====
 const media=p=>{const u=p.media_url,y=u.match(YT);
   if(y)return`<iframe src="https://www.youtube-nocookie.com/embed/${y[1]}?playsinline=1&rel=0" allow="encrypted-media;fullscreen" allowfullscreen loading="lazy"></iframe>`;
   if(/\.(mp4|webm|mov|m4v)(\?|$)/i.test(u)||/res\.cloudinary\.com\/[^/]+\/video\//.test(u))return`<video src="${esc(u)}" poster="${esc(p.thumb_url||'')}" loop playsinline muted preload="metadata"></video>`;
   return`<img src="${esc(u)}" alt="">`};
-const reel=p=>`<section class="reel" data-id="${p.id}">${media(p)}<div class="info"><b>@${esc(p.profiles?.display_name||'user')}</b><span>${esc(p.title)}</span></div><div class="rail">
-<button data-a="like" data-id="${p.id}" class="${liked.has(p.id)?'on':''}" aria-label="Like">${I.heart}<small>${p.likes?.[0]?.count||0}</small></button>
-<button data-a="cm" data-id="${p.id}" aria-label="Comments">${I.cmt}<small>${p.comments?.[0]?.count||0}</small></button>
-<button data-a="sh" data-id="${p.id}" aria-label="Share">${I.share}<small>Share</small></button></div></section>`;
+const reel=p=>`<section class="reel" data-id="${p.id}">${media(p)}<div class="info">
+  <div class="meta"><b>@${esc(p.profiles?.display_name||'user')}</b><span class="tag">👁 <span class="vw">${fmtNum(p.views)}</span></span>${p.hidden?'<span class="tag hid">Hidden</span>':''}</div>
+  <span>${esc(p.title)}</span></div>
+  <div class="rail">
+    <button data-a="like" data-id="${p.id}" class="${liked.has(p.id)?'on':''}" aria-label="Like">${I.heart}<small>${fmtNum(p.likes?.[0]?.count||0)}</small></button>
+    <button data-a="cm" data-id="${p.id}" aria-label="Comments">${I.cmt}<small>${fmtNum(p.comments?.[0]?.count||0)}</small></button>
+    <button data-a="sh" data-id="${p.id}" aria-label="Share">${I.share}<small>Share</small></button>
+    ${isAdmin()?`<button data-a="mod" data-id="${p.id}" aria-label="Moderate">${I.shield}<small>Mod</small></button>`:''}
+  </div></section>`;
 async function home(){
   $('#view').innerHTML=`<div class="feed" id="feed"><div class="empty">Loading…</div></div><button class="mute" data-a="mute">${muted?'Sound off':'Sound on'}</button>`;
-  const {data,error}=await sb.from('posts').select('id,title,media_url,thumb_url,owner,views,profiles(display_name),likes(count),comments(count)').order('created_at',{ascending:false}).limit(40);
+  const sel='id,title,media_url,thumb_url,owner,views,hidden,profiles(display_name),likes(count),comments(count)';
+  const {data,error}=await sb.from('posts').select(sel).order('created_at',{ascending:false}).limit(40);
   if(tab!=='home')return;
   if(error)return $('#feed').innerHTML='<div class="empty">Could not load videos.<br>'+esc(error.message)+'</div>';
-  const lk=await sb.from('likes').select('post_id').eq('owner',me.id);liked=new Set((lk.data||[]).map(x=>x.post_id));posts=data;
-  if(!data.length)return $('#feed').innerHTML='<div class="empty">No videos yet.<br>Be the first — tap ＋ to upload!</div>';
-  $('#feed').innerHTML=data.map(reel).join('');
+  let list=(data||[]).filter(p=>!p.hidden||isAdmin()||p.owner===me.id);
+  if(focusVid){
+    const vid=focusVid;focusVid=null;
+    const idx=list.findIndex(x=>x.id===vid);
+    if(idx>0){const [item]=list.splice(idx,1);list.unshift(item)}
+    else if(idx===-1){
+      const single=await sb.from('posts').select(sel).eq('id',vid).maybeSingle();
+      if(single.data)list.unshift(single.data);
+      else toast('Shared video not found.');
+    }
+  }
+  const lk=await sb.from('likes').select('post_id').eq('owner',me.id);
+  if(tab!=='home')return;
+  liked=new Set((lk.data||[]).map(x=>x.post_id));posts=list;
+  if(!list.length)return $('#feed').innerHTML='<div class="empty">No videos yet.<br>Be the first — tap ＋ to upload!</div>';
+  $('#feed').innerHTML=list.map(reel).join('');
   const io=new IntersectionObserver(es=>es.forEach(en=>{const v=en.target.querySelector('video');
-    if(en.isIntersecting){if(v){v.muted=muted;v.play().catch(()=>{})}if(!en.target.seen){en.target.seen=1;sb.rpc('add_view',{pid:+en.target.dataset.id})}}else if(v)v.pause()}),{root:$('#feed'),threshold:.65});
+    if(en.isIntersecting){
+      if(v){v.muted=muted;v.play().catch(()=>{})}
+      if(!en.target.seen){
+        en.target.seen=1;const pid=+en.target.dataset.id;
+        sb.rpc('add_view',{pid}).then(r=>{
+          if(!r.error){const p=posts.find(x=>x.id===pid);if(p){p.views=(p.views||0)+1;const vw=en.target.querySelector('.vw');if(vw)vw.textContent=fmtNum(p.views)}}
+        });
+      }
+    }else if(v)v.pause()}),{root:$('#feed'),threshold:.65});
   document.querySelectorAll('.reel').forEach(r=>io.observe(r));
 }
 async function like(id,b){
-  const on=liked.has(id),n=b.querySelector('small'),c=+n.textContent;
-  if(on){liked.delete(id);b.classList.remove('on');n.textContent=c-1;const r=await sb.from('likes').delete().match({post_id:id,owner:me.id});if(r.error){liked.add(id);b.classList.add('on');n.textContent=c}}
-  else{liked.add(id);b.classList.add('on');n.textContent=c+1;const r=await sb.from('likes').insert({post_id:id,owner:me.id});if(r.error){liked.delete(id);b.classList.remove('on');n.textContent=c;toast('Could not like: '+r.error.message)}}
+  const p=posts.find(x=>x.id===id),on=liked.has(id),n=b.querySelector('small');
+  const cur=p?.likes?.[0]?.count??(+n.textContent||0);
+  const setCount=v=>{if(p)p.likes=[{count:v}];n.textContent=fmtNum(v)};
+  if(on){liked.delete(id);b.classList.remove('on');setCount(Math.max(0,cur-1));const r=await sb.from('likes').delete().match({post_id:id,owner:me.id});if(r.error){liked.add(id);b.classList.add('on');setCount(cur)}}
+  else{liked.add(id);b.classList.add('on');setCount(cur+1);const r=await sb.from('likes').insert({post_id:id,owner:me.id});if(r.error){liked.delete(id);b.classList.remove('on');setCount(cur);toast('Could not like: '+r.error.message)}}
 }
-async function share(id){const p=posts.find(x=>x.id===id),u=location.origin+location.pathname;try{if(navigator.share)await navigator.share({title:p?p.title:'MStream',url:u});else{await navigator.clipboard.writeText(u);toast('Link copied')}}catch(e){}}
+async function share(id){
+  const p=posts.find(x=>x.id===id),u=`${location.origin}${location.pathname}?v=${id}`;
+  try{if(navigator.share)await navigator.share({title:p?p.title:'MStream',url:u});else{await navigator.clipboard.writeText(u);toast('Video link copied!')}}
+  catch(e){try{await navigator.clipboard.writeText(u);toast('Video link copied!')}catch(_){}}
+}
 async function comments(id){
   sheet(`<h3 style="margin:0 0 8px">Comments</h3><div id="cl" class="mut">Loading…</div><form id="cf" style="display:flex;gap:8px;margin-top:10px"><input id="ci" maxlength="300" placeholder="Add a comment…" required style="margin:0"><button class="btn sm">Send</button></form>`);
-  const draw=async()=>{const {data}=await sb.from('comments').select('body,profiles(display_name)').eq('post_id',id).order('created_at',{ascending:false}).limit(50);$('#cl').innerHTML=(data||[]).map(c=>`<div class="cm"><b>${esc(c.profiles?.display_name)}</b> ${esc(c.body)}</div>`).join('')||'No comments yet. Be first!'};
+  const draw=async()=>{
+    const {data}=await sb.from('comments').select('id,owner,body,profiles(display_name)').eq('post_id',id).order('created_at',{ascending:false}).limit(50);
+    $('#cl').innerHTML=(data||[]).map(c=>{
+      const canDel=c.owner===me.id||isAdmin();
+      return`<div class="cm"><div><b>@${esc(c.profiles?.display_name||'user')}</b> ${esc(c.body)}</div>${canDel?`<button class="cm-del" data-a="delc" data-id="${c.id}" data-pid="${id}" aria-label="Delete comment">×</button>`:''}</div>`;
+    }).join('')||'No comments yet. Be first!';
+  };
   draw();
-  $('#cf').onsubmit=async e=>{e.preventDefault();const v=$('#ci').value.trim();if(!v)return;const r=await sb.from('comments').insert({post_id:id,owner:me.id,body:v});if(r.error)return toast('Could not comment: '+r.error.message);$('#ci').value='';draw();const s=document.querySelector(`[data-a=cm][data-id="${id}"] small`);if(s)s.textContent=+s.textContent+1};
+  $('#cf').onsubmit=async e=>{
+    e.preventDefault();const v=$('#ci').value.trim();if(!v)return;
+    const r=await sb.from('comments').insert({post_id:id,owner:me.id,body:v});
+    if(r.error)return toast('Could not comment: '+r.error.message);
+    $('#ci').value='';draw();
+    const p=posts.find(x=>x.id===id);if(p)p.comments=[{count:(p.comments?.[0]?.count||0)+1}];
+    const s=document.querySelector(`[data-a=cm][data-id="${id}"] small`);if(s&&p)s.textContent=fmtNum(p.comments[0].count);
+  };
+}
+async function delComment(cid,pid){
+  if(!confirm('Delete this comment?'))return;
+  const r=await sb.from('comments').delete().eq('id',cid);
+  if(r.error)return toast(r.error.message);
+  toast('Comment deleted');
+  const p=posts.find(x=>x.id===pid);if(p)p.comments=[{count:Math.max(0,(p.comments?.[0]?.count||1)-1)}];
+  const s=document.querySelector(`[data-a=cm][data-id="${pid}"] small`);if(s&&p)s.textContent=fmtNum(p.comments[0].count);
+  comments(pid);
+}
+function modPostSheet(id){
+  const p=posts.find(x=>x.id===id);if(!p)return;
+  sheet(`<h3 style="margin:0 0 6px">Moderate video</h3><p class="mut" style="margin:0 0 12px"><b>${esc(p.title)}</b> by @${esc(p.profiles?.display_name||'user')} · ${fmtNum(p.views)} views</p>
+  <div style="display:flex;gap:8px;flex-wrap:wrap">
+    <button class="btn2 sm" data-a="hide" data-id="${p.id}" data-v="${p.hidden?0:1}">${p.hidden?'Unhide video':'Hide video'}</button>
+    <button class="btn-danger" data-a="adel" data-id="${p.id}">Delete permanently</button>
+    <button class="btn sm" data-a="go" data-t="admin" onclick="document.getElementById('sheet').hidden=true">Open Admin Panel</button>
+  </div>`);
 }
 
 // ===== Upload =====
 function upload(){
   if(me.is_anonymous)return $('#view').innerHTML=`<div class="page"><div class="card" style="text-align:center"><b>Create an account to upload</b><p class="mut">Guests can watch, like and comment. Uploading needs a free account.</p><button class="btn" data-a="acct">Create account</button></div></div>`;
-  $('#view').innerHTML=`<div class="page"><h2 style="margin:4px 0 12px">New video</h2><form class="card" id="uf"><input id="ut" placeholder="Title" maxlength="120" required><input id="ul" type="url" placeholder="Video link (YouTube or .mp4, https://…)"><div class="or" style="margin:6px 0 10px"><span>or upload a file</span></div><input id="uu" type="file" accept="video/*,image/*"><div id="us" class="msg"></div><button class="btn" id="ub">Publish</button></form></div>`;
-  $('#uf').onsubmit=async e=>{e.preventDefault();const b=$('#ub'),st=m=>$('#us').textContent=m;let u=$('#ul').value.trim();const f=$('#uu').files[0];
-    if(!u&&!f)return st('Add a video link or choose a file.');
-    if(u&&!/^https:\/\//i.test(u))return st('The link must start with https://');
+  if(prof.banned)return $('#view').innerHTML=`<div class="page"><div class="card" style="text-align:center"><b>Account restricted</b><p class="mut">Your account is currently banned from uploading.</p></div></div>`;
+  $('#view').innerHTML=`<div class="page"><h2 style="margin:4px 0 12px">New video</h2><form class="card" id="uf"><input id="ut" placeholder="Title" maxlength="120" required><input id="ul" type="url" placeholder="Video link (YouTube or .mp4, https://…)"><div class="or" style="margin:6px 0 10px"><span>or upload a file (max 100 MB)</span></div><input id="uu" type="file" accept="video/*,image/*"><div id="us" class="msg"></div><button class="btn" id="ub">Publish</button></form></div>`;
+  $('#uu').onchange=()=>{const f=$('#uu').files[0];$('#us').textContent=f?`Selected: ${f.name} (${(f.size/1048576).toFixed(1)} MB)`:'';$('#us').className='msg'+(f&&f.size>100*1048576?' err':'')};
+  $('#uf').onsubmit=async e=>{e.preventDefault();const b=$('#ub'),st=(m,er)=>{$('#us').textContent=m;$('#us').className='msg'+(er?' err':'')};let u=$('#ul').value.trim();const f=$('#uu').files[0];
+    if(!u&&!f)return st('Add a video link or choose a file.',1);
+    if(u&&!/^https:\/\//i.test(u))return st('The link must start with https://',1);
     b.disabled=true;
     try{
       if(f){if(f.size>100*1048576)throw Error('File is too big (max 100 MB).');st('Uploading… large files can take a minute.');
@@ -173,17 +275,18 @@ function upload(){
         if(!j.secure_url)throw Error(j.error?.message||'Upload failed.');u=j.secure_url}
       const r=await sb.from('posts').insert({owner:me.id,title:$('#ut').value.trim(),media_url:u,thumb_url:mkThumb(u)});
       if(r.error)throw Error(r.error.message);toast('Published!');go('home');
-    }catch(err){st(err.message);b.disabled=false}};
+    }catch(err){st(err.message,1);b.disabled=false}};
 }
 
 // ===== Profile =====
 async function profileView(){
-  const {data}=await sb.from('posts').select('id,thumb_url').eq('owner',me.id).order('created_at',{ascending:false}),g=me.is_anonymous;
+  const {data}=await sb.from('posts').select('id,title,thumb_url,views').eq('owner',me.id).order('created_at',{ascending:false}),g=me.is_anonymous;
   if(tab!=='me')return;
-  $('#view').innerHTML=`<div class="page"><div class="card" style="text-align:center"><div class="ava">${esc((prof.display_name||'?')[0].toUpperCase())}</div><b style="font-size:18px">@${esc(prof.display_name)}</b><div class="mut">${g?'Guest account (this device only)':esc(me.email||'')}</div></div>
+  $('#view').innerHTML=`<div class="page"><div class="card" style="text-align:center"><div class="ava">${esc((prof.display_name||'?')[0].toUpperCase())}</div><b style="font-size:18px">@${esc(prof.display_name)}</b> ${isAdmin()?'<span class="badge adm">Admin</span>':''}${prof.banned?' <span class="badge ban">Banned</span>':''}<div class="mut">${g?'Guest account (this device only)':esc(me.email||'')}</div></div>
+  ${isAdmin()?`<div class="card"><button class="btn" data-a="go" data-t="admin">Open Admin Panel</button></div>`:''}
   <div class="card"><b>Your name</b><form id="nf" style="display:flex;gap:8px;margin-top:8px"><input id="nn" value="${esc(prof.display_name)}" maxlength="24" minlength="2" required style="margin:0"><button class="btn sm">Save</button></form></div>
   ${g?`<div class="card"><b>Save your account</b><p class="mut" style="margin:4px 0 10px">Add an email and password so you never lose your data and can upload.</p><form id="gf"><input id="ge" type="email" placeholder="Email" required><input id="gp" type="password" placeholder="Password (min 6 characters)" minlength="6" required><button class="btn">Save account</button></form></div>`:''}
-  <div class="card"><b>Your videos</b><div class="thumbs" style="margin-top:10px">${(data||[]).map(p=>`<div class="th">${p.thumb_url?`<img src="${esc(p.thumb_url)}" alt="">`:''}<button data-a="del" data-id="${p.id}">Delete</button></div>`).join('')||'<span class="mut">Nothing yet.</span>'}</div></div>
+  <div class="card"><b>Your videos (${(data||[]).length})</b><div class="thumbs" style="margin-top:10px">${(data||[]).map(p=>`<div class="th" data-a="open" data-id="${p.id}">${p.thumb_url?`<img src="${esc(p.thumb_url)}" alt="">`:''}<div class="tlabel">👁 ${fmtNum(p.views)} · ${esc(p.title)}</div><button data-a="del" data-id="${p.id}">Delete</button></div>`).join('')||'<span class="mut">Nothing yet.</span>'}</div></div>
   <button class="btn2" data-a="theme">Switch light / dark</button><div style="height:10px"></div><button class="btn2" data-a="out">Log out</button></div>`;
   $('#nf').onsubmit=async e=>{e.preventDefault();const n=$('#nn').value.trim(),r=await sb.from('profiles').update({display_name:n}).eq('id',me.id);
     if(r.error)return toast(/duplicate|unique/i.test(r.error.message)?'That name is taken. Try another.':r.error.message);prof.display_name=n;toast('Name saved');profileView()};
@@ -191,6 +294,63 @@ async function profileView(){
     if(r.error)return toast(friendly(r.error.message));const u=(await sb.auth.getUser()).data.user;me=u;toast('Saved! If we emailed you, confirm it.');profileView()};
 }
 async function delPost(id){if(!confirm('Delete this video?'))return;const r=await sb.from('posts').delete().eq('id',id);toast(r.error?r.error.message:'Deleted');profileView()}
+
+// ===== Admin Panel =====
+async function adminView(){
+  if(!isAdmin())return go('home');
+  $('#view').innerHTML='<div class="page"><h2 style="margin:4px 0 12px">Admin Panel</h2><div class="card mut">Loading…</div></div>';
+  const [pr,ur]=await Promise.all([
+    sb.from('posts').select('id,title,thumb_url,views,hidden,created_at,profiles(display_name),likes(count),comments(count)').order('created_at',{ascending:false}).limit(100),
+    sb.from('profiles').select('id,display_name,role,banned,created_at').order('created_at',{ascending:false}).limit(100)
+  ]);
+  if(tab!=='admin')return;
+  const allPosts=pr.data||[],allUsers=ur.data||[];
+  const hidCount=allPosts.filter(p=>p.hidden).length,banCount=allUsers.filter(u=>u.banned).length;
+  const q=admQuery.toLowerCase();
+  const fPosts=q?allPosts.filter(p=>(p.title||'').toLowerCase().includes(q)||(p.profiles?.display_name||'').toLowerCase().includes(q)):allPosts;
+  const fUsers=q?allUsers.filter(u=>(u.display_name||'').toLowerCase().includes(q)):allUsers;
+  $('#view').innerHTML=`<div class="page">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px"><h2 style="margin:0">Admin Panel</h2><button class="btn2 sm" data-a="go" data-t="home">← Feed</button></div>
+    <div class="stats">
+      <div class="stat"><b>${allPosts.length}</b><small>Videos</small></div>
+      <div class="stat"><b>${hidCount}</b><small>Hidden</small></div>
+      <div class="stat"><b>${allUsers.length}</b><small>Users</small></div>
+      <div class="stat"><b>${banCount}</b><small>Banned</small></div>
+    </div>
+    <div class="seg" style="margin:0 0 12px"><button data-a="atab" data-v="videos" class="${admTab==='videos'?'on':''}">Videos (${allPosts.length})</button><button data-a="atab" data-v="users" class="${admTab==='users'?'on':''}">Users (${allUsers.length})</button></div>
+    <input id="aq" placeholder="Search ${admTab==='videos'?'title or @author':'@username'}…" value="${esc(admQuery)}">
+    <div class="card" id="alist">${admTab==='videos'?
+      (fPosts.map(p=>`<div class="arow">
+        <div class="ath" data-a="open" data-id="${p.id}">${p.thumb_url?`<img src="${esc(p.thumb_url)}" alt="">`:''}</div>
+        <div class="ainfo"><b>${esc(p.title)}</b><small>@${esc(p.profiles?.display_name||'user')} · 👁 ${fmtNum(p.views)} · ❤️ ${fmtNum(p.likes?.[0]?.count||0)}</small>${p.hidden?' <div><span class="badge ban">Hidden</span></div>':''}</div>
+        <div class="aacts"><button class="btn2 sm" data-a="hide" data-id="${p.id}" data-v="${p.hidden?0:1}">${p.hidden?'Unhide':'Hide'}</button><button class="btn-danger" data-a="adel" data-id="${p.id}">Delete</button></div>
+      </div>`).join('')||'<span class="mut">No matching videos.</span>'):
+      (fUsers.map(u=>`<div class="arow">
+        <div class="ainfo"><b>@${esc(u.display_name)}</b> <span class="badge ${u.role==='admin'?'adm':''}">${esc(u.role)}</span> ${u.banned?'<span class="badge ban">Banned</span>':''}<br><small>Joined ${new Date(u.created_at).toLocaleDateString()}</small></div>
+        <div class="aacts">${u.id===me.id?'<span class="mut" style="font-size:12px">You</span>':`<button class="${u.banned?'btn2 sm':'btn-danger'}" data-a="ban" data-uid="${esc(u.id)}" data-v="${u.banned?0:1}">${u.banned?'Unban':'Ban'}</button>`}</div>
+      </div>`).join('')||'<span class="mut">No matching users.</span>')}
+    </div></div>`;
+  $('#aq').oninput=e=>{admQuery=e.target.value;clearTimeout(adminView.t);adminView.t=setTimeout(adminView,220)};
+}
+async function toggleHide(id,hide){
+  const r=await sb.from('posts').update({hidden:hide}).eq('id',id);
+  if(r.error)return toast(r.error.message);
+  closeSheet();toast(hide?'Video hidden':'Video visible again');
+  tab==='admin'?adminView():home();
+}
+async function adminDelPost(id){
+  if(!confirm('Delete this video permanently?'))return;
+  const r=await sb.from('posts').delete().eq('id',id);
+  if(r.error)return toast(r.error.message);
+  closeSheet();toast('Video deleted');
+  tab==='admin'?adminView():home();
+}
+async function toggleBan(uid,ban){
+  if(!confirm(ban?'Ban this user from posting/commenting?':'Unban this user?'))return;
+  const r=await sb.rpc('admin_set_ban',{uid,is_banned:ban});
+  if(r.error)return toast(/function|admin_set_ban/i.test(r.error.message)?'Run supabase/02-admin-patch.sql in Supabase first.':r.error.message);
+  toast(ban?'User banned':'User unbanned');adminView();
+}
 
 // ===== Games =====
 const swipe=(el,cb)=>{let x,y;const a=e=>{x=e.touches[0].clientX;y=e.touches[0].clientY},b=e=>{const dx=e.changedTouches[0].clientX-x,dy=e.changedTouches[0].clientY-y;if(Math.max(Math.abs(dx),Math.abs(dy))>24)cb(Math.abs(dx)>Math.abs(dy)?(dx>0?'r':'l'):(dy>0?'d':'u'))};el.addEventListener('touchstart',a,{passive:true});el.addEventListener('touchend',b);return()=>{el.removeEventListener('touchstart',a);el.removeEventListener('touchend',b)}};
@@ -220,7 +380,7 @@ function games(){
   if(c==='yes'){$('#ad').innerHTML='<div class="mut" style="font-size:10px">ADVERTISEMENT</div>';$('#ad').appendChild(document.createRange().createContextualFragment(CFG.adHtml))}
   else if(!c)sheet('<h3 style="margin:0 0 6px">Cookies &amp; ads</h3><p class="mut">We show ads to keep MStream free. Allow ad cookies?</p><div style="display:flex;gap:8px"><button class="btn2" data-a="consent" data-v="no">No</button><button class="btn" data-a="consent" data-v="yes">Allow</button></div>');
 }
-function game(k){if(stop)stop();$('#view').innerHTML='<div class="page"><button class="link" data-a="go" data-t="games">← All games</button><div id="st"></div></div>';stop=G[k]($('#st'))}
+function game(k){if(stop)stop();$('#view').innerHTML=`<div class="page"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><button class="link" data-a="go" data-t="games">← All games</button><button class="btn2 sm" data-a="game" data-g="${k}">Restart</button></div><div id="st"></div></div>`;stop=G[k]($('#st'))}
 
 init();
 if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
