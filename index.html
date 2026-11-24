@@ -3,9 +3,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>MStream — Watch • Share • Play</title>
-<meta name="description" content="Watch short videos, share your own and play free games.">
+<meta name="description" content="Watch short videos, movies, live TV, share your own and play free games.">
 <meta name="theme-color" content="#6d28d9">
-<meta property="og:title" content="MStream"><meta property="og:description" content="Watch short videos, share your own and play free games."><meta property="og:type" content="website"><meta property="og:url" content="https://rajansaha1025-oss.github.io/mstream/">
+<meta property="og:title" content="MStream"><meta property="og:description" content="Watch short videos, movies, live TV, share your own and play free games."><meta property="og:type" content="website"><meta property="og:url" content="https://rajansaha1025-oss.github.io/mstream/">
 <link rel="icon" href="assets/favicon.png"><link rel="apple-touch-icon" href="icon-192.png"><link rel="manifest" href="manifest.json">
 <style>
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -21,36 +21,54 @@ header{height:52px;flex:none;display:flex;align-items:center;justify-content:spa
 .grad-t{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 main{flex:1;min-height:0;position:relative}
 nav{flex:none;display:flex;justify-content:space-around;align-items:center;height:58px;background:var(--card);border-top:1px solid var(--bd);padding-bottom:env(safe-area-inset-bottom);box-sizing:content-box}
-nav button{background:none;border:0;color:var(--mut);display:flex;flex-direction:column;align-items:center;gap:2px;font-size:11px;padding:6px 14px;cursor:pointer}
-nav button.on{color:#e11d8f}nav svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-nav .plus{background:var(--grad);color:#fff!important;border-radius:14px;padding:8px 18px}
+nav button{background:none;border:0;color:var(--mut);display:flex;flex-direction:column;align-items:center;gap:2px;font-size:11px;padding:6px 10px;cursor:pointer}
+nav button.on{color:#e11d8f}nav svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+nav .plus{background:var(--grad);color:#fff!important;border-radius:14px;padding:8px 15px}
 .btn{background:var(--grad);color:#fff;border:0;border-radius:12px;padding:12px 16px;font-weight:700;font-size:15px;cursor:pointer;width:100%}.btn:disabled{opacity:.6}.btn.sm{width:auto;padding:8px 13px;font-size:13px}
 .btn2{background:var(--card);color:var(--tx);border:1px solid var(--bd);border-radius:12px;padding:11px 16px;font-weight:600;font-size:14px;cursor:pointer;width:100%}.btn2.sm{width:auto;padding:7px 11px;font-size:12px}
 .btn-danger{background:#e11d48;color:#fff;border:0;border-radius:10px;padding:7px 11px;font-size:12px;font-weight:600;cursor:pointer}
 .link{background:none;border:0;color:var(--mut);text-decoration:underline;cursor:pointer;font-size:14px;padding:8px}
-input{width:100%;background:var(--bg);color:var(--tx);border:1px solid var(--bd);border-radius:12px;padding:12px 14px;font-size:15px;margin-bottom:10px;outline:none}input:focus{border-color:#8b5cf6}
+input,select{width:100%;background:var(--bg);color:var(--tx);border:1px solid var(--bd);border-radius:12px;padding:12px 14px;font-size:15px;margin-bottom:10px;outline:none;font-family:inherit}input:focus,select:focus{border-color:#8b5cf6}
 .card{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:16px;margin-bottom:14px}
 .mut{color:var(--mut)}.msg{min-height:20px;font-size:13px;margin:6px 0;color:var(--mut)}.msg.err{color:#e11d48}
 #auth{min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:20px}
 .box{width:100%;max-width:380px;text-align:center}.biglogo{width:104px;height:104px;object-fit:contain}.box h1{margin:4px 0 0;font-size:32px}
-.seg{display:flex;background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:4px;margin:18px 0 14px}.seg button{flex:1;border:0;background:none;color:var(--mut);padding:9px;border-radius:9px;font-weight:700;cursor:pointer}.seg .on{background:var(--grad);color:#fff}
+.seg{display:flex;background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:4px;margin:14px 0 12px}.seg button{flex:1;border:0;background:none;color:var(--mut);padding:9px;border-radius:9px;font-weight:700;cursor:pointer;font-size:13px}.seg .on{background:var(--grad);color:#fff}
 .or{display:flex;align-items:center;gap:10px;color:var(--mut);font-size:12px;margin:14px 0}.or:before,.or:after{content:"";flex:1;height:1px;background:var(--bd)}
+.feed-wrap{height:100%;position:relative}
+.fbar{position:absolute;top:10px;left:10px;right:96px;z-index:3;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;align-items:center}.fbar::-webkit-scrollbar{display:none}
+.chip{flex:none;background:rgba(0,0,0,.55);backdrop-filter:blur(6px);color:#fff;border:1px solid rgba(255,255,255,.18);border-radius:99px;padding:6px 12px;font-size:12px;font-weight:600;cursor:pointer}
+.chip.on{background:var(--grad);border-color:transparent}
+.fsearch{position:absolute;top:48px;left:10px;right:10px;z-index:4;display:flex;gap:6px;background:rgba(15,23,42,.92);padding:8px;border-radius:14px;backdrop-filter:blur(8px)}
+.fsearch input{margin:0;background:#1e293b;color:#fff;border-color:#334155;padding:9px 12px;font-size:14px}
 .feed{height:100%;overflow-y:scroll;scroll-snap-type:y mandatory;background:#000;overscroll-behavior:contain}
 .reel{height:100%;scroll-snap-align:start;scroll-snap-stop:always;position:relative;display:flex;align-items:center;justify-content:center;color:#fff}
 .reel video,.reel img,.reel iframe{width:100%;height:100%;object-fit:contain;border:0;background:#000}
-.info{position:absolute;left:0;right:68px;bottom:0;padding:48px 14px 18px;background:linear-gradient(transparent,rgba(0,0,0,.78));display:flex;flex-direction:column;gap:3px;pointer-events:none}
-.meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:12px;color:#e2e8f0}
+.info{position:absolute;left:0;right:68px;bottom:0;padding:48px 14px 18px;background:linear-gradient(transparent,rgba(0,0,0,.8));display:flex;flex-direction:column;gap:4px;pointer-events:none}
+.info .meta{display:flex;align-items:center;gap:7px;flex-wrap:wrap;font-size:12px;color:#e2e8f0;pointer-events:auto}
+.author-btn{background:none;border:0;color:#fff;font:inherit;font-weight:700;font-size:14px;padding:0;cursor:pointer}
+.fbtn{background:var(--grad);color:#fff;border:0;border-radius:99px;padding:3px 10px;font-size:11px;font-weight:700;cursor:pointer}
+.fbtn.ing{background:rgba(255,255,255,.22)}
 .tag{background:rgba(255,255,255,.18);backdrop-filter:blur(4px);padding:2px 8px;border-radius:99px;font-size:11px;font-weight:600}
 .tag.hid{background:#e11d48;color:#fff}
 .rail{position:absolute;right:8px;bottom:70px;display:flex;flex-direction:column;gap:14px;align-items:center}
 .rail button{background:rgba(0,0,0,.45);border:0;color:#fff;width:48px;height:48px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer}.rail svg{width:22px;height:22px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.rail .on svg{fill:#ff2d7a;stroke:#ff2d7a}.rail small{font-size:10px;margin-top:-1px}
-.mute{position:absolute;top:10px;right:10px;z-index:2;background:rgba(0,0,0,.55);color:#fff;border:0;border-radius:99px;padding:7px 12px;font-size:12px;cursor:pointer}
+.mute{position:absolute;top:10px;right:10px;z-index:3;background:rgba(0,0,0,.55);color:#fff;border:0;border-radius:99px;padding:7px 12px;font-size:12px;cursor:pointer}
 .empty{height:100%;display:flex;align-items:center;justify-content:center;text-align:center;color:#cbd5e1;padding:30px;flex-direction:column;gap:10px}
-.page{height:100%;overflow:auto;padding:16px;max-width:720px;margin:0 auto}
+.page{height:100%;overflow:auto;padding:16px;max-width:760px;margin:0 auto}
 .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.gcard{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:20px 10px;text-align:center;cursor:pointer;color:var(--tx);font:inherit}.gcard i{font-style:normal;font-size:42px;display:block}
+.mgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.mcard{background:var(--card);border:1px solid var(--bd);border-radius:14px;overflow:hidden;cursor:pointer;display:flex;flex-direction:column;text-align:left;padding:0;color:var(--tx);font:inherit}
+.mthumb{position:relative;aspect-ratio:16/9;background:#0f172a;display:flex;align-items:center;justify-content:center;overflow:hidden;width:100%}
+.mthumb img{width:100%;height:100%;object-fit:cover}
+.live-dot{position:absolute;top:8px;left:8px;background:#e11d48;color:#fff;font-size:10px;font-weight:800;padding:2px 7px;border-radius:99px;letter-spacing:.4px}
+.mbody{padding:10px}.mbody b{display:block;font-size:14px;line-height:1.3;margin-bottom:2px}.mbody small{color:var(--mut);font-size:12px}
+.player-box{width:100%;aspect-ratio:16/9;background:#000;border-radius:14px;overflow:hidden;margin-bottom:12px}
+.player-box iframe,.player-box video{width:100%;height:100%;border:0;display:block;background:#000}
 .ava{width:76px;height:76px;border-radius:50%;background:var(--grad);color:#fff;display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:800;margin:0 auto 8px}
+.pstats{display:flex;justify-content:center;gap:24px;margin:10px 0 4px}.pstats div{text-align:center}.pstats b{display:block;font-size:17px}.pstats small{font-size:12px;color:var(--mut)}
 .thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.th{position:relative;aspect-ratio:9/14;background:#1e1e2a;border-radius:10px;overflow:hidden;cursor:pointer}.th img{width:100%;height:100%;object-fit:cover}.th .tlabel{position:absolute;left:0;right:0;bottom:0;padding:18px 6px 5px;background:linear-gradient(transparent,rgba(0,0,0,.8));color:#fff;font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.th button{position:absolute;top:4px;right:4px;background:rgba(0,0,0,.7);color:#fff;border:0;border-radius:6px;padding:4px 7px;font-size:11px;cursor:pointer}
-#sheet{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:50;display:flex;align-items:flex-end}.sheet{background:var(--card);width:100%;max-height:75dvh;border-radius:20px 20px 0 0;padding:16px;overflow:auto;max-width:720px;margin:0 auto}
+#sheet{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:50;display:flex;align-items:flex-end}.sheet{background:var(--card);width:100%;max-height:78dvh;border-radius:20px 20px 0 0;padding:16px;overflow:auto;max-width:720px;margin:0 auto}
 .cm{padding:8px 0;border-bottom:1px solid var(--bd);font-size:14px;display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
 .cm-del{background:none;border:0;color:#e11d48;cursor:pointer;font-size:15px;padding:0 4px;line-height:1}
 #toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:#0f172a;color:#fff;padding:10px 16px;border-radius:12px;font-size:14px;z-index:99;max-width:90%;opacity:0;pointer-events:none;transition:.25s}#toast.show{opacity:1}
@@ -59,12 +77,14 @@ canvas{background:#0f172a;border-radius:12px;max-width:100%;display:block;margin
 .mem{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;max-width:300px;margin:0 auto}.mem button{aspect-ratio:1;border:0;border-radius:12px;font-size:28px;background:#6d28d9;cursor:pointer}.mem .up{background:#fff}
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px}.stat{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:10px 6px;text-align:center}.stat b{font-size:20px;display:block}.stat small{font-size:11px;color:var(--mut)}
 .arow{display:flex;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid var(--bd)}.arow:last-child{border-bottom:0}
-.ath{width:46px;height:62px;border-radius:8px;background:#1e1e2a;overflow:hidden;flex:none;cursor:pointer}.ath img{width:100%;height:100%;object-fit:cover}
+.ath{width:46px;height:62px;border-radius:8px;background:#1e1e2a;overflow:hidden;flex:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px}.ath img{width:100%;height:100%;object-fit:cover}
 .ainfo{flex:1;min-width:0}.ainfo b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.ainfo small{color:var(--mut);font-size:12px}
 .aacts{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
 .badge{display:inline-block;padding:2px 8px;border-radius:99px;font-size:11px;font-weight:700;background:var(--bd);color:var(--tx)}.badge.adm{background:#6d28d9;color:#fff}.badge.ban{background:#e11d48;color:#fff}
+.adbox{margin-top:14px;text-align:center;min-height:10px}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.15/dist/hls.min.js"></script>
 </head><body>
 <div id="auth" hidden></div>
 <div id="app" hidden>
@@ -76,31 +96,113 @@ canvas{background:#0f172a;border-radius:12px;max-width:100%;display:block;margin
 </div>
 <div id="sheet" hidden></div><div id="toast" role="status"></div>
 <script>
-// ===== Settings =====
-const CFG={supabaseUrl:'https://opducjfhhnrlbklynqed.supabase.co',supabaseKey:'sb_publishable_coBrvcC2cDQgnKpusUpuMg_QUXsx4DK',cloudName:'qdvg6ovh',preset:'vwkzcs5p',adHtml:'',enableGoogle:false};
+// ===== Settings (paste Adsterra/Monetag banner HTML inside adHtml; set enableGoogle:true after Google OAuth setup) =====
+const CFG={
+  supabaseUrl:'https://opducjfhhnrlbklynqed.supabase.co',
+  supabaseKey:'sb_publishable_coBrvcC2cDQgnKpusUpuMg_QUXsx4DK',
+  cloudName:'qdvg6ovh',
+  preset:'vwkzcs5p',
+  enableGoogle:true,
+  ads:{
+    banner300:{key:'55a4910290dfed5eaa05b2cf0708dca9',w:300,h:250,src:'https://bauval.org/22/55a4910290dfed5eaa05b2cf0708dca9'},
+    banner320:{key:'9d8be512bbf68ccd2d77057b919bf96c',w:320,h:50,src:'https://bauval.org/22/9d8be512bbf68ccd2d77057b919bf96c'},
+    native:{id:'container-7271f7dc90b3b9a47f889bfa708cbef7',src:'https://bauval.org/21/7271f7dc90b3b9a47f889bfa708cbef7'},
+    directLink:'https://araplhn.org/4/bb1938ad528e42c4dd2f3103a50a9767',
+    globals:['https://abscloud.org/1/f1a3ed6a9d48e69ea90f9683ce143b47','https://bauval.org/14/c92e1181108f1f9b3cb9e7d1d0ada5ef']
+  }
+};
+
+// Built-in fallback catalog (used automatically if 03-v3-patch.sql hasn't been run yet)
+const DEFAULT_CATALOG=[
+  {id:-1,kind:'livetv',title:'Jamuna TV Live',genre:'News • BD',media_url:'https://www.youtube.com/channel/UCN6sm8iHiPd0cnoUardDAnw/live',thumb_url:null,active:true},
+  {id:-2,kind:'livetv',title:'SOMOY TV Live',genre:'News • BD',media_url:'https://www.youtube.com/channel/UCxHoBXkY88Tb8z1Ssj6CWsQ/live',thumb_url:null,active:true},
+  {id:-3,kind:'livetv',title:'Al Jazeera English Live',genre:'News • World',media_url:'https://www.youtube.com/channel/UCNye-wNBqNL5ZzHSJj3l8Bg/live',thumb_url:null,active:true},
+  {id:-4,kind:'livetv',title:'FRANCE 24 English Live',genre:'News • World',media_url:'https://www.youtube.com/channel/UCQfwfsi5VrQ8yKZ-UWmAEFg/live',thumb_url:null,active:true},
+  {id:-5,kind:'livetv',title:'NASA ISS Earth View Live',genre:'Space • Science',media_url:'https://www.youtube.com/channel/UCLA_DiR1FfKNvjuUpBHmylQ/live',thumb_url:null,active:true},
+  {id:-11,kind:'movie',title:'Big Buck Bunny (Full HD)',genre:'Animation • Comedy',media_url:'https://www.youtube.com/watch?v=YE7VzlLtp-4',thumb_url:'https://i.ytimg.com/vi/YE7VzlLtp-4/hqdefault.jpg',active:true},
+  {id:-12,kind:'movie',title:'Sintel (4K Open Movie)',genre:'Animation • Fantasy',media_url:'https://www.youtube.com/watch?v=puLAJaabJh0',thumb_url:'https://i.ytimg.com/vi/puLAJaabJh0/hqdefault.jpg',active:true},
+  {id:-13,kind:'movie',title:'Tears of Steel (4K Sci-Fi)',genre:'Sci-Fi • Action',media_url:'https://www.youtube.com/watch?v=OHOpb2fS-cM',thumb_url:'https://i.ytimg.com/vi/OHOpb2fS-cM/hqdefault.jpg',active:true},
+  {id:-14,kind:'movie',title:'Spring (Blender Open Movie)',genre:'Animation • Adventure',media_url:'https://www.youtube.com/watch?v=WhWc3b3KhnY',thumb_url:'https://i.ytimg.com/vi/WhWc3b3KhnY/hqdefault.jpg',active:true},
+  {id:-15,kind:'movie',title:'CHARGE (Sci-Fi Short Film)',genre:'Sci-Fi • Action',media_url:'https://www.youtube.com/watch?v=UXqq0ZvbOnk',thumb_url:'https://i.ytimg.com/vi/UXqq0ZvbOnk/hqdefault.jpg',active:true},
+  {id:-16,kind:'movie',title:'Cosmos Laundromat',genre:'Animation • Sci-Fi',media_url:'https://www.youtube.com/watch?v=Y-rmzh0PI3c',thumb_url:'https://i.ytimg.com/vi/Y-rmzh0PI3c/hqdefault.jpg',active:true}
+];
+const CATS=[['all','All'],['reels','Reels'],['anime','Anime'],['movies','Movies'],['music','Music'],['gaming','Gaming'],['news','News']];
+
 const $=s=>document.querySelector(s),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const ls=(k,v)=>{try{return v===undefined?localStorage.getItem(k):localStorage.setItem(k,v)}catch(e){}};
 const fmtNum=n=>{n=+n||0;if(n>=1e6)return(n/1e6).toFixed(1).replace(/\.0$/,'')+'M';if(n>=1e3)return(n/1e3).toFixed(1).replace(/\.0$/,'')+'K';return String(n)};
 const svg=p=>`<svg viewBox="0 0 24 24">${p}</svg>`;
-const I={home:svg('<path d="M3 11l9-8 9 8v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/>'),games:svg('<rect x="2" y="7" width="20" height="11" rx="5"/><path d="M7 10v5M4.5 12.5h5M16 11.5h.01M18.5 14h.01"/>'),plus:svg('<path d="M12 5v14M5 12h14"/>'),user:svg('<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/>'),
-heart:svg('<path d="M12 21s-8-5.5-8-11a4.5 4.5 0 0 1 8-2.5A4.5 4.5 0 0 1 20 10c0 5.5-8 11-8 11z"/>'),cmt:svg('<path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/>'),share:svg('<path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7M16 6l-4-4-4 4M12 2v14"/>'),
-shield:svg('<path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/>')};
-let sb,me,prof,tab='home',liked=new Set(),muted=true,posts=[],stop=null,focusVid=null,admTab='videos',admQuery='';
+const I={
+  home:svg('<path d="M3 11l9-8 9 8v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/>'),
+  tv:svg('<rect x="2" y="5" width="20" height="14" rx="3"/><path d="M8 21h8M12 19v2M10 9l5 3-5 3z"/>'),
+  games:svg('<rect x="2" y="7" width="20" height="11" rx="5"/><path d="M7 10v5M4.5 12.5h5M16 11.5h.01M18.5 14h.01"/>'),
+  plus:svg('<path d="M12 5v14M5 12h14"/>'),
+  user:svg('<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/>'),
+  heart:svg('<path d="M12 21s-8-5.5-8-11a4.5 4.5 0 0 1 8-2.5A4.5 4.5 0 0 1 20 10c0 5.5-8 11-8 11z"/>'),
+  cmt:svg('<path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/>'),
+  share:svg('<path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7M16 6l-4-4-4 4M12 2v14"/>'),
+  shield:svg('<path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/>')
+};
+
+let sb,me,prof,tab='home',liked=new Set(),following=new Set(),muted=true,posts=[],catalog=[],stop=null;
+let focusVid=null,feedCat='all',feedQ='',showSearch=false,expTab='livetv',expQ='',playingItem=null,admTab='videos',admQuery='',hlsInst=null;
+
 const toast=m=>{const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove('show'),2800)};
 const setTheme=t=>{document.documentElement.dataset.theme=t;ls('ms_theme',t);const b=$('#tb');if(b)b.textContent=t==='dark'?'Light mode':'Dark mode'};
 const sheet=h=>{const s=$('#sheet');s.innerHTML='<div class="sheet">'+h+'</div>';s.hidden=false},closeSheet=()=>{$('#sheet').hidden=true};
 $('#sheet').onclick=e=>{if(e.target.id==='sheet')closeSheet()};
 const YT=/(?:youtu\.be\/|v=|shorts\/|embed\/)([\w-]{11})/;
+const YTCH=/youtube\.com\/channel\/(UC[\w-]{20,})\/live/i;
 const mkThumb=u=>{const y=u.match(YT);if(y)return`https://i.ytimg.com/vi/${y[1]}/hqdefault.jpg`;if(/res\.cloudinary\.com\/[^/]+\/video\//.test(u))return u.replace(/\.[a-z0-9]+$/i,'.jpg');if(/\.(jpe?g|png|webp|gif)(\?|$)/i.test(u))return u;return null};
 const friendly=m=>/invalid login/i.test(m)?'Email or password is wrong.':/not confirmed/i.test(m)?'Please confirm your email first (check your inbox).':/already registered/i.test(m)?'This email already has an account. Log in instead.':/rate limit|too many/i.test(m)?'Too many tries. Please wait a minute.':/provider is not enabled|unsupported provider/i.test(m)?'Google login is not turned on yet.':/anonymous/i.test(m)?'Guest mode is off. Turn on Anonymous sign-ins in Supabase.':m;
 const isAdmin=()=>prof?.role==='admin';
+let globalAdsLoaded=false;
+function loadGlobalAds(){
+  if(globalAdsLoaded||!CFG.ads?.globals)return;
+  globalAdsLoaded=true;
+  CFG.ads.globals.forEach(src=>{
+    const s=document.createElement('script');
+    s.setAttribute('data-cfasync','false');s.async=true;s.src=src;
+    document.body.appendChild(s);
+  });
+}
+function mkBannerFrame(b){
+  const doc=`<!DOCTYPE html><html><body style="margin:0;overflow:hidden;display:flex;justify-content:center;align-items:center;background:transparent"><script>atOptions={'key':'${b.key}','format':'iframe','height':${b.h},'width':${b.w},'params':{}};<\/script><script data-cfasync="false" src="${b.src}"><\/script></body></html>`;
+  const f=document.createElement('iframe');
+  f.width=b.w;f.height=b.h;f.frameBorder='0';f.scrolling='no';
+  f.style.cssText=`border:0;max-width:100%;display:block;margin:0 auto;overflow:hidden`;
+  f.srcdoc=doc;
+  return f;
+}
+function mountAd(el,slot='games'){
+  if(!el||!CFG.ads)return;
+  loadGlobalAds();
+  el.innerHTML='<div class="mut" style="font-size:10px;margin-bottom:6px;letter-spacing:.5px">ADVERTISEMENT</div>';
+  if(slot==='explore'){
+    el.appendChild(mkBannerFrame(CFG.ads.banner320));
+    const nw=document.createElement('div');nw.style.marginTop='12px';
+    const nc=document.createElement('div');nc.id=CFG.ads.native.id;nw.appendChild(nc);
+    const ns=document.createElement('script');ns.async=true;ns.setAttribute('data-cfasync','false');ns.src=CFG.ads.native.src;
+    nw.appendChild(ns);el.appendChild(nw);
+  }else{
+    el.appendChild(mkBannerFrame(CFG.ads.banner300));
+    if(CFG.ads.directLink){
+      const a=document.createElement('a');
+      a.href=CFG.ads.directLink;a.target='_blank';a.rel='noopener noreferrer sponsored';
+      a.className='btn2 sm';a.style.cssText='display:inline-block;margin-top:10px;text-decoration:none';
+      a.textContent='🎁 Sponsored Offer';
+      el.appendChild(a);
+    }
+  }
+}
+function cleanupHls(){if(hlsInst){hlsInst.destroy();hlsInst=null}}
 
 // ===== Start =====
 async function init(){
   const qv=new URLSearchParams(location.search).get('v');
   if(qv&&/^\d+$/.test(qv))focusVid=+qv;
   setTheme(ls('ms_theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'));
-  if(!CFG.supabaseUrl||!window.supabase){$('#auth').hidden=false;$('#auth').innerHTML='<div class="box card"><b>Almost ready</b><p class="mut">Paste your Supabase Project URL into <code>supabaseUrl</code> at the top of the script in index.html.</p></div>';return}
+  if(!CFG.supabaseUrl||!window.supabase){$('#auth').hidden=false;$('#auth').innerHTML='<div class="box card"><b>Almost ready</b><p class="mut">Paste your Supabase Project URL into <code>supabaseUrl</code> in index.html.</p></div>';return}
   sb=supabase.createClient(CFG.supabaseUrl,CFG.supabaseKey);
   sb.auth.onAuthStateChange((ev)=>{
     if(ev==='SIGNED_OUT'){me=null;showAuth()}
@@ -111,10 +213,12 @@ async function init(){
 async function enter(u){
   me=u;const r=await sb.from('profiles').select('*').eq('id',u.id).maybeSingle();
   prof=r.data||{display_name:'user',role:'user',banned:false};
+  const fl=await sb.from('follows').select('following').eq('follower',u.id);
+  following=new Set((fl.data||[]).map(x=>x.following));
   $('#auth').hidden=true;$('#app').hidden=false;
   $('#admb').hidden=!isAdmin();
-  $('#nav').innerHTML=[['home','Home'],['games','Games'],['up',''],['me','Profile']].map(([k,l])=>`<button data-a="go" data-t="${k}" class="${k==='up'?'plus':''}" aria-label="${l||'Upload'}">${I[k==='up'?'plus':k==='me'?'user':k]}${l?`<span>${l}</span>`:''}</button>`).join('');
-  setTheme(document.documentElement.dataset.theme);go('home');
+  $('#nav').innerHTML=[['home','Reels'],['explore','TV & Movies'],['up',''],['games','Games'],['me','Profile']].map(([k,l])=>`<button data-a="go" data-t="${k}" class="${k==='up'?'plus':''}" aria-label="${l||'Upload'}">${I[k==='up'?'plus':k==='me'?'user':k==='explore'?'tv':k]}${l?`<span>${l}</span>`:''}</button>`).join('');
+  setTheme(document.documentElement.dataset.theme);loadGlobalAds();go('home');
 }
 function showAuth(mode='login'){
   $('#app').hidden=true;const a=$('#auth');a.hidden=false;
@@ -137,56 +241,104 @@ function showAuth(mode='login'){
 
 // ===== Navigation & actions =====
 function go(t){
-  tab=t;if(stop){stop();stop=null}
+  tab=t;cleanupHls();if(stop){stop();stop=null}
+  if(t!=='explore')playingItem=null;
   document.querySelectorAll('#nav button').forEach(b=>b.classList.toggle('on',b.dataset.t===t));
   $('#view').innerHTML='';
-  ({home,games,up:upload,me:profileView,admin:adminView})[t]();
+  ({home,explore,up:upload,games,me:profileView,admin:adminView})[t]();
 }
-function openVideo(id){focusVid=id;go('home')}
+function openVideo(id){focusVid=id;closeSheet();go('home')}
 document.addEventListener('click',e=>{
   if(e.target.tagName==='VIDEO'&&e.target.closest('.feed')){e.target.paused?e.target.play():e.target.pause();return}
   const b=e.target.closest('[data-a]');if(!b)return;const a=b.dataset.a,id=+b.dataset.id;
-  if(a==='go')go(b.dataset.t);else if(a==='like')like(id,b);else if(a==='cm')comments(id);else if(a==='sh')share(id);
+  if(a==='go')go(b.dataset.t);
+  else if(a==='like')like(id,b);else if(a==='cm')comments(id);else if(a==='sh')share(id);
   else if(a==='mute'){muted=!muted;document.querySelectorAll('.feed video').forEach(v=>v.muted=muted);b.textContent=muted?'Sound off':'Sound on'}
   else if(a==='theme')setTheme(document.documentElement.dataset.theme==='dark'?'light':'dark');
   else if(a==='acct')go('me');else if(a==='del')delPost(id);else if(a==='open')openVideo(id);
   else if(a==='game')game(b.dataset.g);else if(a==='out')sb.auth.signOut();
-  else if(a==='consent'){ls('ms_consent',b.dataset.v);closeSheet();if(tab==='games')games()}
+  else if(a==='consent'){ls('ms_consent',b.dataset.v);closeSheet();if(tab==='games')games();else if(tab==='explore')explore()}
   else if(a==='delc')delComment(id,+b.dataset.pid);
   else if(a==='mod')modPostSheet(id);
   else if(a==='hide')toggleHide(id,b.dataset.v==='1');
   else if(a==='adel')adminDelPost(id);
   else if(a==='ban')toggleBan(b.dataset.uid,b.dataset.v==='1');
   else if(a==='atab'){admTab=b.dataset.v;admQuery='';adminView()}
+  else if(a==='cat'){feedCat=b.dataset.v;home()}
+  else if(a==='fsearch'){showSearch=!showSearch;home()}
+  else if(a==='follow')toggleFollow(b.dataset.uid,b);
+  else if(a==='creator')creatorSheet(b.dataset.uid);
+  else if(a==='etab'){expTab=b.dataset.v;playingItem=null;explore()}
+  else if(a==='play'){playingItem=catalog.find(x=>x.id===id)||null;explore()}
+  else if(a==='cdel')adminDelCatalog(id);
+  else if(a==='ctog')adminToggleCatalog(id,b.dataset.v==='1');
 });
 
-// ===== Home feed =====
-const media=p=>{const u=p.media_url,y=u.match(YT);
+// ===== Media renderer =====
+const mediaHtml=u=>{
+  const ch=u.match(YTCH);
+  if(ch)return`<iframe src="https://www.youtube-nocookie.com/embed/live_stream?channel=${ch[1]}&autoplay=1&rel=0" allow="autoplay;encrypted-media;fullscreen" allowfullscreen></iframe>`;
+  const y=u.match(YT);
+  if(y)return`<iframe src="https://www.youtube-nocookie.com/embed/${y[1]}?playsinline=1&rel=0" allow="autoplay;encrypted-media;fullscreen" allowfullscreen loading="lazy"></iframe>`;
+  if(/\.m3u8(\?|$)/i.test(u))return`<video id="hlsv" controls playsinline autoplay></video>`;
+  if(/\.(mp4|webm|mov|m4v)(\?|$)/i.test(u)||/res\.cloudinary\.com\/[^/]+\/video\//.test(u))return`<video src="${esc(u)}" loop playsinline muted preload="metadata" controls></video>`;
+  return`<img src="${esc(u)}" alt="">`;
+};
+const reelMedia=p=>{
+  const u=p.media_url,y=u.match(YT);
   if(y)return`<iframe src="https://www.youtube-nocookie.com/embed/${y[1]}?playsinline=1&rel=0" allow="encrypted-media;fullscreen" allowfullscreen loading="lazy"></iframe>`;
   if(/\.(mp4|webm|mov|m4v)(\?|$)/i.test(u)||/res\.cloudinary\.com\/[^/]+\/video\//.test(u))return`<video src="${esc(u)}" poster="${esc(p.thumb_url||'')}" loop playsinline muted preload="metadata"></video>`;
-  return`<img src="${esc(u)}" alt="">`};
-const reel=p=>`<section class="reel" data-id="${p.id}">${media(p)}<div class="info">
-  <div class="meta"><b>@${esc(p.profiles?.display_name||'user')}</b><span class="tag">👁 <span class="vw">${fmtNum(p.views)}</span></span>${p.hidden?'<span class="tag hid">Hidden</span>':''}</div>
-  <span>${esc(p.title)}</span></div>
-  <div class="rail">
-    <button data-a="like" data-id="${p.id}" class="${liked.has(p.id)?'on':''}" aria-label="Like">${I.heart}<small>${fmtNum(p.likes?.[0]?.count||0)}</small></button>
-    <button data-a="cm" data-id="${p.id}" aria-label="Comments">${I.cmt}<small>${fmtNum(p.comments?.[0]?.count||0)}</small></button>
-    <button data-a="sh" data-id="${p.id}" aria-label="Share">${I.share}<small>Share</small></button>
-    ${isAdmin()?`<button data-a="mod" data-id="${p.id}" aria-label="Moderate">${I.shield}<small>Mod</small></button>`:''}
-  </div></section>`;
+  return`<img src="${esc(u)}" alt="">`;
+};
+
+// ===== Home feed (Reels + Search + Categories + Follow) =====
+const reel=p=>{
+  const isMe=p.owner===me.id,ing=following.has(p.owner);
+  return`<section class="reel" data-id="${p.id}">${reelMedia(p)}<div class="info">
+    <div class="meta">
+      <button class="author-btn" data-a="creator" data-uid="${esc(p.owner)}">@${esc(p.profiles?.display_name||'user')}</button>
+      ${isMe?'':`<button class="fbtn ${ing?'ing':''}" data-a="follow" data-uid="${esc(p.owner)}">${ing?'Following':'+ Follow'}</button>`}
+      <span class="tag">👁 <span class="vw">${fmtNum(p.views)}</span></span>
+      ${p.category&&p.category!=='reels'?`<span class="tag">${esc(p.category)}</span>`:''}
+      ${p.hidden?'<span class="tag hid">Hidden</span>':''}
+    </div>
+    <span>${esc(p.title)}</span></div>
+    <div class="rail">
+      <button data-a="like" data-id="${p.id}" class="${liked.has(p.id)?'on':''}" aria-label="Like">${I.heart}<small>${fmtNum(p.likes?.[0]?.count||0)}</small></button>
+      <button data-a="cm" data-id="${p.id}" aria-label="Comments">${I.cmt}<small>${fmtNum(p.comments?.[0]?.count||0)}</small></button>
+      <button data-a="sh" data-id="${p.id}" aria-label="Share">${I.share}<small>Share</small></button>
+      ${isAdmin()?`<button data-a="mod" data-id="${p.id}" aria-label="Moderate">${I.shield}<small>Mod</small></button>`:''}
+    </div></section>`;
+};
 async function home(){
-  $('#view').innerHTML=`<div class="feed" id="feed"><div class="empty">Loading…</div></div><button class="mute" data-a="mute">${muted?'Sound off':'Sound on'}</button>`;
-  const sel='id,title,media_url,thumb_url,owner,views,hidden,profiles(display_name),likes(count),comments(count)';
-  const {data,error}=await sb.from('posts').select(sel).order('created_at',{ascending:false}).limit(40);
+  $('#view').innerHTML=`<div class="feed-wrap">
+    <div class="fbar">
+      <button class="chip ${showSearch||feedQ?'on':''}" data-a="fsearch">🔍</button>
+      ${CATS.map(([k,l])=>`<button class="chip ${feedCat===k?'on':''}" data-a="cat" data-v="${k}">${l}</button>`).join('')}
+    </div>
+    ${showSearch?`<div class="fsearch"><input id="fq" placeholder="Search reels or @creator…" value="${esc(feedQ)}"><button class="btn sm" id="fclr">Clear</button></div>`:''}
+    <button class="mute" data-a="mute">${muted?'Sound off':'Sound on'}</button>
+    <div class="feed" id="feed"><div class="empty">Loading…</div></div>
+  </div>`;
+  if(showSearch){
+    $('#fq').oninput=e=>{feedQ=e.target.value;clearTimeout(home.t);home.t=setTimeout(home,260)};
+    $('#fclr').onclick=()=>{feedQ='';showSearch=false;home()};
+  }
+  let res=await sb.from('posts').select('id,title,category,media_url,thumb_url,owner,views,hidden,profiles(display_name),likes(count),comments(count)').order('created_at',{ascending:false}).limit(50);
+  if(res.error&&/category/i.test(res.error.message)){
+    res=await sb.from('posts').select('id,title,media_url,thumb_url,owner,views,hidden,profiles(display_name),likes(count),comments(count)').order('created_at',{ascending:false}).limit(50);
+  }
   if(tab!=='home')return;
-  if(error)return $('#feed').innerHTML='<div class="empty">Could not load videos.<br>'+esc(error.message)+'</div>';
-  let list=(data||[]).filter(p=>!p.hidden||isAdmin()||p.owner===me.id);
+  if(res.error)return $('#feed').innerHTML='<div class="empty">Could not load videos.<br>'+esc(res.error.message)+'</div>';
+  let list=(res.data||[]).filter(p=>!p.hidden||isAdmin()||p.owner===me.id);
+  if(feedCat!=='all')list=list.filter(p=>(p.category||'reels')===feedCat);
+  if(feedQ.trim()){const q=feedQ.trim().toLowerCase();list=list.filter(p=>(p.title||'').toLowerCase().includes(q)||(p.profiles?.display_name||'').toLowerCase().includes(q))}
   if(focusVid){
     const vid=focusVid;focusVid=null;
     const idx=list.findIndex(x=>x.id===vid);
     if(idx>0){const [item]=list.splice(idx,1);list.unshift(item)}
     else if(idx===-1){
-      const single=await sb.from('posts').select(sel).eq('id',vid).maybeSingle();
+      const single=await sb.from('posts').select('id,title,media_url,thumb_url,owner,views,hidden,profiles(display_name),likes(count),comments(count)').eq('id',vid).maybeSingle();
       if(single.data)list.unshift(single.data);
       else toast('Shared video not found.');
     }
@@ -194,7 +346,7 @@ async function home(){
   const lk=await sb.from('likes').select('post_id').eq('owner',me.id);
   if(tab!=='home')return;
   liked=new Set((lk.data||[]).map(x=>x.post_id));posts=list;
-  if(!list.length)return $('#feed').innerHTML='<div class="empty">No videos yet.<br>Be the first — tap ＋ to upload!</div>';
+  if(!list.length)return $('#feed').innerHTML='<div class="empty">No videos in this view yet.<br><button class="btn sm" data-a="go" data-t="explore">Watch Live TV &amp; Movies</button></div>';
   $('#feed').innerHTML=list.map(reel).join('');
   const io=new IntersectionObserver(es=>es.forEach(en=>{const v=en.target.querySelector('video');
     if(en.isIntersecting){
@@ -214,6 +366,38 @@ async function like(id,b){
   const setCount=v=>{if(p)p.likes=[{count:v}];n.textContent=fmtNum(v)};
   if(on){liked.delete(id);b.classList.remove('on');setCount(Math.max(0,cur-1));const r=await sb.from('likes').delete().match({post_id:id,owner:me.id});if(r.error){liked.add(id);b.classList.add('on');setCount(cur)}}
   else{liked.add(id);b.classList.add('on');setCount(cur+1);const r=await sb.from('likes').insert({post_id:id,owner:me.id});if(r.error){liked.delete(id);b.classList.remove('on');setCount(cur);toast('Could not like: '+r.error.message)}}
+}
+async function toggleFollow(uid,btn){
+  if(uid===me.id)return;
+  const on=following.has(uid);
+  if(on){
+    following.delete(uid);
+    document.querySelectorAll(`[data-a=follow][data-uid="${uid}"]`).forEach(x=>{x.classList.remove('ing');x.textContent='+ Follow'});
+    const r=await sb.from('follows').delete().match({follower:me.id,following:uid});
+    if(r.error){following.add(uid);toast(/follows|relation/i.test(r.error.message)?'Run supabase/03-v3-patch.sql in Supabase first.':r.error.message)}
+  }else{
+    following.add(uid);
+    document.querySelectorAll(`[data-a=follow][data-uid="${uid}"]`).forEach(x=>{x.classList.add('ing');x.textContent='Following'});
+    const r=await sb.from('follows').insert({follower:me.id,following:uid});
+    if(r.error){following.delete(uid);document.querySelectorAll(`[data-a=follow][data-uid="${uid}"]`).forEach(x=>{x.classList.remove('ing');x.textContent='+ Follow'});toast(/follows|relation/i.test(r.error.message)?'Run supabase/03-v3-patch.sql in Supabase first.':r.error.message)}
+  }
+}
+async function creatorSheet(uid){
+  sheet('<div class="mut" style="text-align:center;padding:16px">Loading profile…</div>');
+  const [pr,vr,fr,fg]=await Promise.all([
+    sb.from('profiles').select('id,display_name,role').eq('id',uid).maybeSingle(),
+    sb.from('posts').select('id,title,thumb_url,views').eq('owner',uid).eq('hidden',false).order('created_at',{ascending:false}).limit(24),
+    sb.from('follows').select('follower',{count:'exact',head:true}).eq('following',uid),
+    sb.from('follows').select('following',{count:'exact',head:true}).eq('follower',uid)
+  ]);
+  const u=pr.data||{display_name:'user',role:'user'},vids=vr.data||[],ing=following.has(uid);
+  sheet(`<div style="text-align:center">
+    <div class="ava" style="width:62px;height:62px;font-size:26px">${esc((u.display_name||'?')[0].toUpperCase())}</div>
+    <b style="font-size:18px">@${esc(u.display_name)}</b> ${u.role==='admin'?'<span class="badge adm">Admin</span>':''}
+    <div class="pstats"><div><b>${fmtNum(fr.count||0)}</b><small>Followers</small></div><div><b>${fmtNum(fg.count||0)}</b><small>Following</small></div><div><b>${vids.length}</b><small>Videos</small></div></div>
+    ${uid===me.id?'':`<button class="${ing?'btn2 sm':'btn sm'}" style="margin:6px 0 12px" data-a="follow" data-uid="${esc(uid)}">${ing?'Following':'+ Follow'}</button>`}
+  </div>
+  <div class="thumbs">${vids.map(p=>`<div class="th" data-a="open" data-id="${p.id}">${p.thumb_url?`<img src="${esc(p.thumb_url)}" alt="">`:''}<div class="tlabel">👁 ${fmtNum(p.views)} · ${esc(p.title)}</div></div>`).join('')||'<span class="mut">No public videos yet.</span>'}</div>`);
 }
 async function share(id){
   const p=posts.find(x=>x.id===id),u=`${location.origin}${location.pathname}?v=${id}`;
@@ -258,11 +442,57 @@ function modPostSheet(id){
   </div>`);
 }
 
+// ===== Explore: Live TV & Movies =====
+async function explore(){
+  cleanupHls();
+  $('#view').innerHTML='<div class="page"><div class="card mut">Loading Live TV &amp; Movies…</div></div>';
+  const r=await sb.from('catalog').select('*').eq('active',true).order('id',{ascending:true});
+  if(tab!=='explore')return;
+  catalog=(!r.error&&r.data&&r.data.length)?r.data:DEFAULT_CATALOG;
+  const q=expQ.trim().toLowerCase();
+  const items=catalog.filter(x=>x.kind===expTab&&(!q||(x.title||'').toLowerCase().includes(q)||(x.genre||'').toLowerCase().includes(q)));
+  const pl=playingItem;
+  $('#view').innerHTML=`<div class="page">
+    <div class="seg" style="margin-top:0">
+      <button data-a="etab" data-v="livetv" class="${expTab==='livetv'?'on':''}">🔴 Live TV</button>
+      <button data-a="etab" data-v="movie" class="${expTab==='movie'?'on':''}">🎬 Movies</button>
+    </div>
+    ${pl?`<div class="card" style="padding:12px">
+      <div class="player-box">${mediaHtml(pl.media_url)}</div>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:8px">
+        <div><b>${esc(pl.title)}</b><div class="mut" style="font-size:12px">${esc(pl.genre)}</div></div>
+        <button class="btn2 sm" id="closepl">Close</button>
+      </div>
+    </div>`:''}
+    <input id="eq" placeholder="Search ${expTab==='livetv'?'live channels':'movies'}…" value="${esc(expQ)}">
+    <div class="mgrid">${items.map(x=>`<button class="mcard" data-a="play" data-id="${x.id}">
+      <div class="mthumb">${x.thumb_url?`<img src="${esc(x.thumb_url)}" alt="">`:`<span style="font-size:34px">${x.kind==='livetv'?'📡':'🎬'}</span>`}${x.kind==='livetv'?'<span class="live-dot">● LIVE</span>':''}</div>
+      <div class="mbody"><b>${esc(x.title)}</b><small>${esc(x.genre)}</small></div>
+    </button>`).join('')||'<div class="card mut" style="grid-column:1/-1;text-align:center">Nothing matched your search.</div>'}</div>
+    <div id="ead" class="adbox"></div>
+  </div>`;
+  $('#eq').oninput=e=>{expQ=e.target.value;clearTimeout(explore.t);explore.t=setTimeout(explore,220)};
+  const cp=$('#closepl');if(cp)cp.onclick=()=>{playingItem=null;explore()};
+  if(pl&&/\.m3u8(\?|$)/i.test(pl.media_url)){
+    const v=$('#hlsv');
+    if(v){
+      if(window.Hls&&Hls.isSupported()){hlsInst=new Hls();hlsInst.loadSource(pl.media_url);hlsInst.attachMedia(v);v.play().catch(()=>{})}
+      else if(v.canPlayType('application/vnd.apple.mpegurl')){v.src=pl.media_url;v.play().catch(()=>{})}
+    }
+  }
+  mountAd($('#ead'),'explore');
+}
+
 // ===== Upload =====
 function upload(){
   if(me.is_anonymous)return $('#view').innerHTML=`<div class="page"><div class="card" style="text-align:center"><b>Create an account to upload</b><p class="mut">Guests can watch, like and comment. Uploading needs a free account.</p><button class="btn" data-a="acct">Create account</button></div></div>`;
   if(prof.banned)return $('#view').innerHTML=`<div class="page"><div class="card" style="text-align:center"><b>Account restricted</b><p class="mut">Your account is currently banned from uploading.</p></div></div>`;
-  $('#view').innerHTML=`<div class="page"><h2 style="margin:4px 0 12px">New video</h2><form class="card" id="uf"><input id="ut" placeholder="Title" maxlength="120" required><input id="ul" type="url" placeholder="Video link (YouTube or .mp4, https://…)"><div class="or" style="margin:6px 0 10px"><span>or upload a file (max 100 MB)</span></div><input id="uu" type="file" accept="video/*,image/*"><div id="us" class="msg"></div><button class="btn" id="ub">Publish</button></form></div>`;
+  $('#view').innerHTML=`<div class="page"><h2 style="margin:4px 0 12px">New video</h2><form class="card" id="uf">
+    <input id="ut" placeholder="Title" maxlength="120" required>
+    <select id="uc">${CATS.filter(c=>c[0]!=='all').map(([k,l])=>`<option value="${k}">${l}</option>`).join('')}<option value="other">Other</option></select>
+    <input id="ul" type="url" placeholder="Video link (YouTube or .mp4, https://…)">
+    <div class="or" style="margin:6px 0 10px"><span>or upload a file (max 100 MB)</span></div>
+    <input id="uu" type="file" accept="video/*,image/*"><div id="us" class="msg"></div><button class="btn" id="ub">Publish</button></form></div>`;
   $('#uu').onchange=()=>{const f=$('#uu').files[0];$('#us').textContent=f?`Selected: ${f.name} (${(f.size/1048576).toFixed(1)} MB)`:'';$('#us').className='msg'+(f&&f.size>100*1048576?' err':'')};
   $('#uf').onsubmit=async e=>{e.preventDefault();const b=$('#ub'),st=(m,er)=>{$('#us').textContent=m;$('#us').className='msg'+(er?' err':'')};let u=$('#ul').value.trim();const f=$('#uu').files[0];
     if(!u&&!f)return st('Add a video link or choose a file.',1);
@@ -273,20 +503,31 @@ function upload(){
         const fd=new FormData();fd.append('file',f);fd.append('upload_preset',CFG.preset);
         const r=await fetch(`https://api.cloudinary.com/v1_1/${CFG.cloudName}/auto/upload`,{method:'POST',body:fd}),j=await r.json();
         if(!j.secure_url)throw Error(j.error?.message||'Upload failed.');u=j.secure_url}
-      const r=await sb.from('posts').insert({owner:me.id,title:$('#ut').value.trim(),media_url:u,thumb_url:mkThumb(u)});
+      const row={owner:me.id,title:$('#ut').value.trim(),category:$('#uc').value,media_url:u,thumb_url:mkThumb(u)};
+      let r=await sb.from('posts').insert(row);
+      if(r.error&&/category/i.test(r.error.message)){delete row.category;r=await sb.from('posts').insert(row)}
       if(r.error)throw Error(r.error.message);toast('Published!');go('home');
     }catch(err){st(err.message,1);b.disabled=false}};
 }
 
 // ===== Profile =====
 async function profileView(){
-  const {data}=await sb.from('posts').select('id,title,thumb_url,views').eq('owner',me.id).order('created_at',{ascending:false}),g=me.is_anonymous;
+  const [vr,fr,fg]=await Promise.all([
+    sb.from('posts').select('id,title,thumb_url,views').eq('owner',me.id).order('created_at',{ascending:false}),
+    sb.from('follows').select('follower',{count:'exact',head:true}).eq('following',me.id),
+    sb.from('follows').select('following',{count:'exact',head:true}).eq('follower',me.id)
+  ]);
+  const data=vr.data||[],g=me.is_anonymous;
   if(tab!=='me')return;
-  $('#view').innerHTML=`<div class="page"><div class="card" style="text-align:center"><div class="ava">${esc((prof.display_name||'?')[0].toUpperCase())}</div><b style="font-size:18px">@${esc(prof.display_name)}</b> ${isAdmin()?'<span class="badge adm">Admin</span>':''}${prof.banned?' <span class="badge ban">Banned</span>':''}<div class="mut">${g?'Guest account (this device only)':esc(me.email||'')}</div></div>
+  $('#view').innerHTML=`<div class="page"><div class="card" style="text-align:center"><div class="ava">${esc((prof.display_name||'?')[0].toUpperCase())}</div>
+    <b style="font-size:18px">@${esc(prof.display_name)}</b> ${isAdmin()?'<span class="badge adm">Admin</span>':''}${prof.banned?' <span class="badge ban">Banned</span>':''}
+    <div class="mut">${g?'Guest account (this device only)':esc(me.email||'')}</div>
+    <div class="pstats"><div><b>${fmtNum(fr.count||0)}</b><small>Followers</small></div><div><b>${fmtNum(fg.count||0)}</b><small>Following</small></div><div><b>${data.length}</b><small>Videos</small></div></div>
+  </div>
   ${isAdmin()?`<div class="card"><button class="btn" data-a="go" data-t="admin">Open Admin Panel</button></div>`:''}
   <div class="card"><b>Your name</b><form id="nf" style="display:flex;gap:8px;margin-top:8px"><input id="nn" value="${esc(prof.display_name)}" maxlength="24" minlength="2" required style="margin:0"><button class="btn sm">Save</button></form></div>
   ${g?`<div class="card"><b>Save your account</b><p class="mut" style="margin:4px 0 10px">Add an email and password so you never lose your data and can upload.</p><form id="gf"><input id="ge" type="email" placeholder="Email" required><input id="gp" type="password" placeholder="Password (min 6 characters)" minlength="6" required><button class="btn">Save account</button></form></div>`:''}
-  <div class="card"><b>Your videos (${(data||[]).length})</b><div class="thumbs" style="margin-top:10px">${(data||[]).map(p=>`<div class="th" data-a="open" data-id="${p.id}">${p.thumb_url?`<img src="${esc(p.thumb_url)}" alt="">`:''}<div class="tlabel">👁 ${fmtNum(p.views)} · ${esc(p.title)}</div><button data-a="del" data-id="${p.id}">Delete</button></div>`).join('')||'<span class="mut">Nothing yet.</span>'}</div></div>
+  <div class="card"><b>Your videos (${data.length})</b><div class="thumbs" style="margin-top:10px">${data.map(p=>`<div class="th" data-a="open" data-id="${p.id}">${p.thumb_url?`<img src="${esc(p.thumb_url)}" alt="">`:''}<div class="tlabel">👁 ${fmtNum(p.views)} · ${esc(p.title)}</div><button data-a="del" data-id="${p.id}">Delete</button></div>`).join('')||'<span class="mut">Nothing yet.</span>'}</div></div>
   <button class="btn2" data-a="theme">Switch light / dark</button><div style="height:10px"></div><button class="btn2" data-a="out">Log out</button></div>`;
   $('#nf').onsubmit=async e=>{e.preventDefault();const n=$('#nn').value.trim(),r=await sb.from('profiles').update({display_name:n}).eq('id',me.id);
     if(r.error)return toast(/duplicate|unique/i.test(r.error.message)?'That name is taken. Try another.':r.error.message);prof.display_name=n;toast('Name saved');profileView()};
@@ -299,38 +540,65 @@ async function delPost(id){if(!confirm('Delete this video?'))return;const r=awai
 async function adminView(){
   if(!isAdmin())return go('home');
   $('#view').innerHTML='<div class="page"><h2 style="margin:4px 0 12px">Admin Panel</h2><div class="card mut">Loading…</div></div>';
-  const [pr,ur]=await Promise.all([
-    sb.from('posts').select('id,title,thumb_url,views,hidden,created_at,profiles(display_name),likes(count),comments(count)').order('created_at',{ascending:false}).limit(100),
-    sb.from('profiles').select('id,display_name,role,banned,created_at').order('created_at',{ascending:false}).limit(100)
+  const [pr,ur,cr]=await Promise.all([
+    sb.from('posts').select('id,title,thumb_url,views,hidden,created_at,profiles(display_name),likes(count)').order('created_at',{ascending:false}).limit(100),
+    sb.from('profiles').select('id,display_name,role,banned,created_at').order('created_at',{ascending:false}).limit(100),
+    sb.from('catalog').select('*').order('id',{ascending:false}).limit(100)
   ]);
   if(tab!=='admin')return;
-  const allPosts=pr.data||[],allUsers=ur.data||[];
+  const allPosts=pr.data||[],allUsers=ur.data||[],allCat=cr.data||[];
   const hidCount=allPosts.filter(p=>p.hidden).length,banCount=allUsers.filter(u=>u.banned).length;
   const q=admQuery.toLowerCase();
   const fPosts=q?allPosts.filter(p=>(p.title||'').toLowerCase().includes(q)||(p.profiles?.display_name||'').toLowerCase().includes(q)):allPosts;
   const fUsers=q?allUsers.filter(u=>(u.display_name||'').toLowerCase().includes(q)):allUsers;
+  const fCat=q?allCat.filter(c=>(c.title||'').toLowerCase().includes(q)||(c.genre||'').toLowerCase().includes(q)):allCat;
   $('#view').innerHTML=`<div class="page">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px"><h2 style="margin:0">Admin Panel</h2><button class="btn2 sm" data-a="go" data-t="home">← Feed</button></div>
     <div class="stats">
-      <div class="stat"><b>${allPosts.length}</b><small>Videos</small></div>
-      <div class="stat"><b>${hidCount}</b><small>Hidden</small></div>
+      <div class="stat"><b>${allPosts.length}</b><small>Reels</small></div>
+      <div class="stat"><b>${allCat.length}</b><small>TV/Movies</small></div>
       <div class="stat"><b>${allUsers.length}</b><small>Users</small></div>
       <div class="stat"><b>${banCount}</b><small>Banned</small></div>
     </div>
-    <div class="seg" style="margin:0 0 12px"><button data-a="atab" data-v="videos" class="${admTab==='videos'?'on':''}">Videos (${allPosts.length})</button><button data-a="atab" data-v="users" class="${admTab==='users'?'on':''}">Users (${allUsers.length})</button></div>
-    <input id="aq" placeholder="Search ${admTab==='videos'?'title or @author':'@username'}…" value="${esc(admQuery)}">
-    <div class="card" id="alist">${admTab==='videos'?
+    <div class="seg" style="margin:0 0 12px">
+      <button data-a="atab" data-v="videos" class="${admTab==='videos'?'on':''}">Reels (${allPosts.length})</button>
+      <button data-a="atab" data-v="catalog" class="${admTab==='catalog'?'on':''}">TV &amp; Movies (${allCat.length})</button>
+      <button data-a="atab" data-v="users" class="${admTab==='users'?'on':''}">Users (${allUsers.length})</button>
+    </div>
+    ${admTab==='catalog'?`<form class="card" id="catf"><b>Add Live TV or Movie</b>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px">
+        <select id="ck" style="margin:0"><option value="livetv">Live TV</option><option value="movie">Movie</option></select>
+        <input id="cg" placeholder="Genre (e.g. News • BD)" style="margin:0" required>
+      </div>
+      <input id="ct" placeholder="Title" style="margin-top:8px" required>
+      <input id="cu" type="url" placeholder="YouTube, YouTube Live channel, .m3u8 or .mp4 URL" required>
+      <button class="btn sm">Add to Catalog</button>
+    </form>`:''}
+    <input id="aq" placeholder="Search…" value="${esc(admQuery)}">
+    <div class="card">${admTab==='videos'?
       (fPosts.map(p=>`<div class="arow">
-        <div class="ath" data-a="open" data-id="${p.id}">${p.thumb_url?`<img src="${esc(p.thumb_url)}" alt="">`:''}</div>
+        <div class="ath" data-a="open" data-id="${p.id}">${p.thumb_url?`<img src="${esc(p.thumb_url)}" alt="">`:'🎬'}</div>
         <div class="ainfo"><b>${esc(p.title)}</b><small>@${esc(p.profiles?.display_name||'user')} · 👁 ${fmtNum(p.views)} · ❤️ ${fmtNum(p.likes?.[0]?.count||0)}</small>${p.hidden?' <div><span class="badge ban">Hidden</span></div>':''}</div>
         <div class="aacts"><button class="btn2 sm" data-a="hide" data-id="${p.id}" data-v="${p.hidden?0:1}">${p.hidden?'Unhide':'Hide'}</button><button class="btn-danger" data-a="adel" data-id="${p.id}">Delete</button></div>
-      </div>`).join('')||'<span class="mut">No matching videos.</span>'):
+      </div>`).join('')||'<span class="mut">No matching reels.</span>'):
+      admTab==='catalog'?
+      (fCat.map(c=>`<div class="arow">
+        <div class="ath">${c.thumb_url?`<img src="${esc(c.thumb_url)}" alt="">`:(c.kind==='livetv'?'📡':'🎬')}</div>
+        <div class="ainfo"><b>${esc(c.title)}</b><small>${c.kind==='livetv'?'Live TV':'Movie'} · ${esc(c.genre)}</small>${!c.active?' <div><span class="badge ban">Hidden</span></div>':''}</div>
+        <div class="aacts"><button class="btn2 sm" data-a="ctog" data-id="${c.id}" data-v="${c.active?0:1}">${c.active?'Hide':'Show'}</button><button class="btn-danger" data-a="cdel" data-id="${c.id}">Delete</button></div>
+      </div>`).join('')||'<span class="mut">Run supabase/03-v3-patch.sql to manage TV &amp; Movies here.</span>'):
       (fUsers.map(u=>`<div class="arow">
         <div class="ainfo"><b>@${esc(u.display_name)}</b> <span class="badge ${u.role==='admin'?'adm':''}">${esc(u.role)}</span> ${u.banned?'<span class="badge ban">Banned</span>':''}<br><small>Joined ${new Date(u.created_at).toLocaleDateString()}</small></div>
         <div class="aacts">${u.id===me.id?'<span class="mut" style="font-size:12px">You</span>':`<button class="${u.banned?'btn2 sm':'btn-danger'}" data-a="ban" data-uid="${esc(u.id)}" data-v="${u.banned?0:1}">${u.banned?'Unban':'Ban'}</button>`}</div>
       </div>`).join('')||'<span class="mut">No matching users.</span>')}
     </div></div>`;
   $('#aq').oninput=e=>{admQuery=e.target.value;clearTimeout(adminView.t);adminView.t=setTimeout(adminView,220)};
+  const cf=$('#catf');if(cf)cf.onsubmit=async e=>{
+    e.preventDefault();const u=$('#cu').value.trim();
+    const r=await sb.from('catalog').insert({kind:$('#ck').value,title:$('#ct').value.trim(),genre:$('#cg').value.trim(),media_url:u,thumb_url:mkThumb(u)});
+    if(r.error)return toast(/catalog|relation/i.test(r.error.message)?'Run supabase/03-v3-patch.sql first.':r.error.message);
+    toast('Added!');adminView();
+  };
 }
 async function toggleHide(id,hide){
   const r=await sb.from('posts').update({hidden:hide}).eq('id',id);
@@ -345,10 +613,21 @@ async function adminDelPost(id){
   closeSheet();toast('Video deleted');
   tab==='admin'?adminView():home();
 }
+async function adminToggleCatalog(id,active){
+  const r=await sb.from('catalog').update({active}).eq('id',id);
+  if(r.error)return toast(r.error.message);
+  toast(active?'Visible':'Hidden');adminView();
+}
+async function adminDelCatalog(id){
+  if(!confirm('Delete this item?'))return;
+  const r=await sb.from('catalog').delete().eq('id',id);
+  if(r.error)return toast(r.error.message);
+  toast('Deleted');adminView();
+}
 async function toggleBan(uid,ban){
   if(!confirm(ban?'Ban this user from posting/commenting?':'Unban this user?'))return;
   const r=await sb.rpc('admin_set_ban',{uid,is_banned:ban});
-  if(r.error)return toast(/function|admin_set_ban/i.test(r.error.message)?'Run supabase/02-admin-patch.sql in Supabase first.':r.error.message);
+  if(r.error)return toast(/function|admin_set_ban/i.test(r.error.message)?'Run supabase/03-v3-patch.sql in Supabase first.':r.error.message);
   toast(ban?'User banned':'User unbanned');adminView();
 }
 
@@ -375,10 +654,8 @@ mem(el){const E=['🍎','🍌','🍇','🍉','🍓','🥝','🍍','🍒'],c=[...
     if(o.length===2){m++;if(c[o[0]]===c[o[1]]){o.forEach(k=>d.add(k));o=[]}else{l=1;draw();setTimeout(()=>{o=[];l=0;draw()},700);return}}draw()};
   draw();return()=>{el.onclick=null}}};
 function games(){
-  $('#view').innerHTML=`<div class="page"><h2 style="margin:4px 0 12px">Free games</h2><div class="grid">${[['snake','🐍','Snake'],['2048','🔢','2048'],['mem','🧠','Memory']].map(([k,i,n])=>`<button class="gcard" data-a="game" data-g="${k}"><i>${i}</i><b>${n}</b></button>`).join('')}</div><div id="ad" style="margin-top:16px;text-align:center"></div></div>`;
-  if(!CFG.adHtml)return;const c=ls('ms_consent');
-  if(c==='yes'){$('#ad').innerHTML='<div class="mut" style="font-size:10px">ADVERTISEMENT</div>';$('#ad').appendChild(document.createRange().createContextualFragment(CFG.adHtml))}
-  else if(!c)sheet('<h3 style="margin:0 0 6px">Cookies &amp; ads</h3><p class="mut">We show ads to keep MStream free. Allow ad cookies?</p><div style="display:flex;gap:8px"><button class="btn2" data-a="consent" data-v="no">No</button><button class="btn" data-a="consent" data-v="yes">Allow</button></div>');
+  $('#view').innerHTML=`<div class="page"><h2 style="margin:4px 0 12px">Free games</h2><div class="grid">${[['snake','🐍','Snake'],['2048','🔢','2048'],['mem','🧠','Memory']].map(([k,i,n])=>`<button class="gcard" data-a="game" data-g="${k}"><i>${i}</i><b>${n}</b></button>`).join('')}</div><div id="ad" class="adbox"></div></div>`;
+  mountAd($('#ad'),'games');
 }
 function game(k){if(stop)stop();$('#view').innerHTML=`<div class="page"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><button class="link" data-a="go" data-t="games">← All games</button><button class="btn2 sm" data-a="game" data-g="${k}">Restart</button></div><div id="st"></div></div>`;stop=G[k]($('#st'))}
 
