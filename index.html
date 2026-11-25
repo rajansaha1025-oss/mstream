@@ -145,7 +145,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{ou
 <div id="sheet" hidden></div><div id="toast" role="status"></div><div id="upbar" hidden></div>
 <script>
 // ===== Settings (paste Adsterra/Monetag banner HTML inside adHtml; set enableGoogle:true after Google OAuth setup) =====
-const APP_VER='12.0',APP_BUILD=12;
+const APP_VER='12.1',APP_BUILD=13;
 let deferredPrompt=null,remoteVer=null;
 window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e});
 const CFG={
@@ -544,9 +544,9 @@ async function home(){
     $('#fq').oninput=e=>{feedQ=e.target.value;clearTimeout(home.t);home.t=setTimeout(home,260)};
     $('#fclr').onclick=()=>{feedQ='';showSearch=false;home()};
   }
-  let res=await sb.from('posts').select('id,title,category,sound_title,sound_url,boost_until,media_url,thumb_url,owner,views,hidden,profiles(display_name),likes(count),comments(count)').order('created_at',{ascending:false}).limit(120);
+  let res=await sb.from('posts').select('id,title,category,sound_title,sound_url,boost_until,media_url,thumb_url,owner,views,hidden,profiles!owner(display_name),likes(count),comments(count)').order('created_at',{ascending:false}).limit(120);
   if(res.error&&/category|sound_|boost_/i.test(res.error.message)){
-    res=await sb.from('posts').select('id,title,media_url,thumb_url,owner,views,hidden,profiles(display_name),likes(count),comments(count)').order('created_at',{ascending:false}).limit(120);
+    res=await sb.from('posts').select('id,title,media_url,thumb_url,owner,views,hidden,profiles!owner(display_name),likes(count),comments(count)').order('created_at',{ascending:false}).limit(120);
   }
   if(tab!=='home')return;
   if(res.error)return $('#feed').innerHTML='<div class="empty">Could not load videos.<br>'+esc(res.error.message)+'</div>';
@@ -564,7 +564,7 @@ async function home(){
     const idx=list.findIndex(x=>x.id===vid);
     if(idx>0){const [item]=list.splice(idx,1);list.unshift(item)}
     else if(idx===-1){
-      const single=await sb.from('posts').select('id,title,media_url,thumb_url,owner,views,hidden,profiles(display_name),likes(count),comments(count)').eq('id',vid).maybeSingle();
+      const single=await sb.from('posts').select('id,title,media_url,thumb_url,owner,views,hidden,profiles!owner(display_name),likes(count),comments(count)').eq('id',vid).maybeSingle();
       if(single.data)list.unshift(single.data);
       else toast('Shared video not found.');
     }
@@ -649,7 +649,7 @@ async function toggleSave(id,b){
 }
 async function loadStoriesBar(){
   const bar=$('#stbar');if(!bar)return;
-  const r=await sb.from('stories').select('id,owner,media_url,caption,bg,created_at,profiles(display_name)').gt('expires_at',new Date().toISOString()).order('created_at',{ascending:false}).limit(30);
+  const r=await sb.from('stories').select('id,owner,media_url,caption,bg,created_at,profiles!owner(display_name)').gt('expires_at',new Date().toISOString()).order('created_at',{ascending:false}).limit(30);
   if(tab!=='home')return;
   stories=r.error?[]:(r.data||[]);
   bar.innerHTML=`<button class="st-item" data-a="addst"><div class="st-ring add"><div class="st-in">＋</div></div><small>Your Story</small></button>`+
@@ -724,7 +724,7 @@ async function share(id){
 async function comments(id){
   sheet(`<h3 style="margin:0 0 8px">Comments</h3><div id="cl" class="mut">Loading…</div><form id="cf" style="display:flex;gap:8px;margin-top:10px"><input id="ci" maxlength="300" placeholder="Add a comment…" required style="margin:0"><button class="btn sm">Send</button></form>`);
   const draw=async()=>{
-    const {data}=await sb.from('comments').select('id,owner,body,profiles(display_name)').eq('post_id',id).order('created_at',{ascending:false}).limit(120);
+    const {data}=await sb.from('comments').select('id,owner,body,profiles!owner(display_name)').eq('post_id',id).order('created_at',{ascending:false}).limit(120);
     $('#cl').innerHTML=(data||[]).map(c=>{
       const canDel=c.owner===me.id||isAdmin();
       return`<div class="cm"><div><b>@${esc(c.profiles?.display_name||'user')}</b> ${esc(c.body)}</div>${canDel?`<button class="cm-del" data-a="delc" data-id="${c.id}" data-pid="${id}" aria-label="Delete comment">×</button>`:''}</div>`;
@@ -1052,10 +1052,10 @@ async function adminView(){
   if(!isAdmin())return go('home');
   $('#view').innerHTML='<div class="page"><h2 style="margin:4px 0 12px">Admin Panel</h2><div class="card mut">Loading…</div></div>';
   const [pr,ur,cr,br]=await Promise.all([
-    sb.from('posts').select('id,title,thumb_url,views,hidden,boost_until,created_at,profiles(display_name),likes(count)').order('created_at',{ascending:false}).limit(100),
+    sb.from('posts').select('id,title,thumb_url,views,hidden,boost_until,created_at,profiles!owner(display_name),likes(count)').order('created_at',{ascending:false}).limit(100),
     sb.from('profiles').select('id,display_name,role,banned,created_at').order('created_at',{ascending:false}).limit(100),
     sb.from('catalog').select('*').order('id',{ascending:false}).limit(100),
-    sb.from('boost_requests').select('id,post_id,plan,amount_bdt,pay_method,trx_id,status,created_at,profiles(display_name),posts(title)').order('created_at',{ascending:false}).limit(100)
+    sb.from('boost_requests').select('id,post_id,plan,amount_bdt,pay_method,trx_id,status,created_at,profiles!owner(display_name),posts!post_id(title)').order('created_at',{ascending:false}).limit(100)
   ]);
   if(tab!=='admin')return;
   const allPosts=pr.data||[],allUsers=ur.data||[],allCat=cr.data||[],allBoosts=br.data||[];

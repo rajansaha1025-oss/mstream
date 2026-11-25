@@ -1,7 +1,7 @@
 {
-  "version": "12.0",
-  "build": 12,
-  "changelog": "Android TV Remote support, App Download Center (Android & TV APK), Auto-Update System & more BD Live TV channels.",
+  "version": "12.1",
+  "build": 13,
+  "changelog": "Fixed Reels loading error (PostgREST relationship fix).",
   "apkUrl": "",
   "tvApkUrl": "",
   "forceUpdate": false
