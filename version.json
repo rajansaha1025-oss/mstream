@@ -1,0 +1,8 @@
+{
+  "version": "12.0",
+  "build": 12,
+  "changelog": "Android TV Remote support, App Download Center (Android & TV APK), Auto-Update System & more BD Live TV channels.",
+  "apkUrl": "",
+  "tvApkUrl": "",
+  "forceUpdate": false
+}
